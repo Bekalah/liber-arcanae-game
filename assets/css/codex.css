@@ -1,0 +1,16 @@
+body{margin:0;font-family:system-ui,sans-serif;background:#0b0e12;color:#e7e6ea}
+.skyline{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;background:#12141b;border-bottom:1px solid #232733}
+.controls{display:flex;gap:.5rem;align-items:center}
+.cathedral{display:flex;height:calc(100vh - 70px)}
+.deck-list{width:25%;overflow-y:auto;border-right:1px solid #232733}
+.deck-list button{display:block;width:100%;padding:.5rem 1rem;background:none;border:none;text-align:left;color:inherit;cursor:pointer}
+.deck-list button:hover{background:rgba(255,255,255,.05)}
+.card-stage{flex:1;padding:1rem;overflow-y:auto}
+.card-stage h2{margin-top:0;color:var(--accent)}
+.theme-hermetic{--accent:#d4af37}
+.theme-thelemic{--accent:#e63b2e}
+.theme-qabalah{--accent:#6b5b95}
+.theme-druidic{--accent:#4caf50}
+.theme-vodou{--accent:#008b8b}
+.theme-alchemical{--accent:#ff7f50}
+.btn-ritual,.btn-safe{padding:.25rem .5rem;background:#232733;color:#e7e6ea;border:1px solid #3a3f52;border-radius:4px}

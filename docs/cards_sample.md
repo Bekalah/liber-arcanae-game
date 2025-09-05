@@ -1,0 +1,33 @@
+## The Fool
+- Letter: Aleph
+- Astrology: Air
+- Ray: White
+- Angel/Demon: Metatron ↔ Naamah
+- Deities: Hermes
+- Crystal: Clear Quartz (SiO2)
+- Artifact: Pouch
+- Pigment: White Lead
+- Secret Tara: Tara 0
+- Thought-form: Beginnings
+- HGA Fragment: "Innocent"
+- Pattern Glyph: Spiral
+- Psyche: Beginner's mind
+- Technical: Solfeggio=432
+- App Pulls: 0
+
+## The Magician
+- Letter: Beth
+- Astrology: Mercury
+- Ray: Gold
+- Angel/Demon: Raphael ↔ Asmodeus
+- Deities: Thoth
+- Crystal: Citrine (SiO2)
+- Artifact: Wand
+- Pigment: Ochre
+- Secret Tara: Tara 1
+- Thought-form: Focused will
+- HGA Fragment: "Manifest"
+- Pattern Glyph: Infinity
+- Psyche: Skill and power
+- Technical: Solfeggio=528
+- App Pulls: 0
