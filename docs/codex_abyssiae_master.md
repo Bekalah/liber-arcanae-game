@@ -559,3 +559,7 @@ git commit -m "feat(liber-arcanae): bootstrap deck UI, engine, compiler, ND-safe
 echo "✔ Repo scaffolded. Next: paste your sealed docs/codex_abyssiae_master.md, then run:"
 echo "    python tools/registry_compile.py"
 echo "    open core/index.html"
+git commit -m "feat(liber-arcanae): bootstrap deck UI, engine, compiler, ND-safe defaults"
+echo "✔ Repo scaffolded. Next: paste your sealed docs/codex_abyssiae_master.md, then run:"
+echo "    python tools/registry_compile.py"
+echo "    open core/index.html"
