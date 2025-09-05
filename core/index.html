@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>LIBER ARCANAE -- Codex Abyssiae (Live Deck)</title>
+  <link rel="stylesheet" href="../assets/css/codex.css"/>
+</head>
+<body class="theme-hermetic nd-safe">
+  <header class="skyline">
+    <h1>LIBER ARCANAE · <span>Codex Abyssiae</span></h1>
+    <div class="controls">
+      <label>Style
+        <select id="stylePack">
+          <option value="hermetic" selected>Hermetic</option>
+          <option value="thelemic">Thelemic</option>
+          <option value="qabalah">Qabalah</option>
+          <option value="druidic">Druidic</option>
+          <option value="vodou">Vodou</option>
+          <option value="alchemical">Alchemical</option>
+        </select>
+      </label>
+      <label>Filter
+        <select id="filter">
+          <option value="all" selected>All</option>
+          <option value="majors">Majors</option>
+          <option value="wands">Wands</option>
+          <option value="cups">Cups</option>
+          <option value="pentacles">Pentacles</option>
+          <option value="swords">Swords</option>
+        </select>
+      </label>
+      <input id="query" type="search" placeholder="search..."/>
+      <button id="banish" class="btn-ritual">✧ Consecrate</button>
+      <button id="safe" class="btn-safe">ND Safe</button>
+    </div>
+  </header>
+
+  <main class="cathedral">
+    <aside class="deck-list" id="deckList" aria-label="Cards"></aside>
+    <section class="card-stage" id="cardStage" aria-live="polite"></section>
+  </main>
+
+  <script src="../assets/js/cathedral-helper.js"></script>
+  <script src="../assets/js/engine.js"></script>
+</body>
+</html>
