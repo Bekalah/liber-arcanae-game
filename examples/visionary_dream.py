@@ -1,5 +1,6 @@
 import math
 import random
+from datetime import datetime
 from PIL import Image, ImageDraw
 
 # Set canvas dimensions (1920x1080)
@@ -46,5 +47,7 @@ for _ in range(300):
     color = random.choice(palette)
     draw.ellipse([x, y, x + 3, y + 3], fill=color)
 
-# Save the final visionary art piece
-canvas.save('Visionary_Dream.png')
+# Save the final visionary art piece with a unique timestamped name
+filename = f"Visionary_Dream_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+canvas.save(filename)
+print(f"Saved {filename}")
