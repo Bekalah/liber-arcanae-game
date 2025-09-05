@@ -82,3 +82,24 @@ if __name__ == "__main__":
     for i in range(1, args.rooms + 1):
         create_visionary_room(f"room{i}")
 
+    draw.ellipse(bbox, outline=color, width=2)
+
+# Generate symmetrical arc patterns
+for i in range(60):
+    color = palette[i % len(palette)]
+    angle = i * (math.pi / 30)
+    x = center[0] + int(math.cos(angle) * max_radius)
+    y = center[1] + int(math.sin(angle) * max_radius)
+    draw.line([center, (x, y)], fill=color, width=2)
+
+# Add random luminescent points
+for _ in range(300):
+    x = random.randint(0, WIDTH - 1)
+    y = random.randint(0, HEIGHT - 1)
+    color = random.choice(palette)
+    draw.ellipse([x, y, x + 3, y + 3], fill=color)
+
+# Save the final visionary art piece with a unique timestamped name
+filename = f"Visionary_Dream_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+canvas.save(filename)
+print(f"Saved {filename}")
