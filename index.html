@@ -13,9 +13,6 @@
     .status { color:var(--muted); font-size:12px; }
     #stage { display:block; margin:16px auto; box-shadow:0 0 0 1px #1d1d2a; }
     .note { max-width:900px; margin:0 auto 16px; color:var(--muted); }
-    #settings { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
-    #settings label { font-size:12px; color:var(--muted); }
-    #settings select { margin-left:4px; }
     code { background:#11111a; padding:2px 4px; border-radius:3px; }
   </style>
 </head>
@@ -23,26 +20,6 @@
   <header>
     <div><strong>Cosmic Helix Renderer</strong> — layered sacred geometry (offline, ND-safe)</div>
     <div class="status" id="status">Loading palette…</div>
-    <div id="settings" aria-label="safety settings">
-      <label>Motion
-        <select id="motion">
-          <option value="reduced" selected>Reduced</option>
-          <option value="full">Full</option>
-        </select>
-      </label>
-      <label>Audio
-        <select id="audio">
-          <option value="off" selected>Off</option>
-          <option value="on">On</option>
-        </select>
-      </label>
-      <label>Contrast
-        <select id="contrast">
-          <option value="balanced" selected>Balanced</option>
-          <option value="high">High</option>
-        </select>
-      </label>
-    </div>
   </header>
 
   <canvas id="stage" width="1440" height="900" aria-label="Layered sacred geometry canvas"></canvas>
@@ -50,20 +27,10 @@
 
   <script type="module">
     import { renderHelix } from "./js/helix-renderer.mjs";
-    import { Safety } from "./ui/safety.js";
 
     const elStatus = document.getElementById("status");
     const canvas = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-
-    Safety.apply();
-
-    const motionSel = document.getElementById("motion");
-    const audioSel = document.getElementById("audio");
-    const contrastSel = document.getElementById("contrast");
-    for (const [sel, key] of [[motionSel,"motion"], [audioSel,"autoplay"], [contrastSel,"contrast"]]) {
-      sel.addEventListener("change", e => { Safety.state[key] = e.target.value; Safety.apply(); });
-    }
 
     async function loadJSON(path) {
       try {
