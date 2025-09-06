@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Offline-first: no external requests; open directly -->
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -27,14 +27,14 @@
   <p class="note">This static renderer encodes Vesica, Tree-of-Life, Fibonacci, and a static double-helix lattice. No animation, no autoplay, no external libs. Open this file directly.</p>
 
   <script type="module">
-    // Offline-first renderer: imports local module only
+
     import { renderHelix } from "./js/helix-renderer.mjs";
 
     const elStatus = document.getElementById("status");
     const canvas = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
 
-    // Offline-first: fetch only attempts local palette file
+
     async function loadJSON(path) {
       try {
         const res = await fetch(path, { cache: "no-store" });
