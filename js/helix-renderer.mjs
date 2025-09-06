@@ -9,7 +9,7 @@
     4) Double-helix lattice (two phase-shifted sine strands with crossbars)
 
   All geometry is parameterized with numerology constants passed via NUM.
-  No animation, no network, calm palette.
+  Offline-first: no animation, no network requests, calm palette.
 */
 
 export function renderHelix(ctx, opts) {
