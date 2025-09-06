@@ -1,4 +1,5 @@
 import {validateInterface} from "../engines/interface-guard.js";
+
 import {readFile} from "node:fs/promises";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
@@ -8,6 +9,7 @@ import {fileURLToPath} from "node:url";
   const samplePath = path.resolve(__dirname, "../assets/data/sample_interface.json");
   const sample = JSON.parse(await readFile(samplePath, "utf8"));
   const res = await validateInterface(sample, "http://localhost:8080/assets/data/interface.schema.json");
+
 import {readFile} from "fs/promises";
 
 (async ()=>{
