@@ -1,0 +1,11 @@
+import {validateInterface} from "../engines/interface-guard.js";
+import {readFile} from "fs/promises";
+
+(async ()=>{
+  const schemaText = await readFile(new URL("../assets/data/interface.schema.json", import.meta.url), "utf8");
+  const schemaUrl = "data:application/json," + encodeURIComponent(schemaText);
+  const sample = JSON.parse(await readFile(new URL("../assets/data/sample_interface.json", import.meta.url), "utf8"));
+  const res = await validateInterface(sample, schemaUrl);
+  if(!res.valid){ throw new Error("Interface schema failed: "+JSON.stringify(res.errors)); }
+  console.log("Interface schema OK");
+})();
