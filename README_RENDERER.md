@@ -1,63 +1,22 @@
 # Cosmic Helix Renderer
 
-
-Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open `index.html`
-in any modern browser. No build steps, no network requests.
+Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open [index.html](./index.html) directly in a browser; no build steps or network requests.
 
 ## Layers
-1. **Vesica field** – intersecting circles laid out with the constant THREE.
-2. **Tree-of-Life** – ten nodes and twenty-two paths, drawn with soft lines.
-3. **Fibonacci curve** – fixed logarithmic spiral, no rotation or motion.
-4. **Double-helix lattice** – two phase-shifted strands with quiet crossbars.
+1. **Vesica field** – intersecting circles laid out with the constant 3.
+2. **Tree-of-Life** – ten sephirot with twenty-two connecting paths.
+3. **Fibonacci curve** – fixed logarithmic spiral honoring natural growth.
+4. **Double-helix lattice** – two phase-shifted strands with calm crossbars.
 
-Each layer uses the next color from `data/palette.json`. If the palette file is
-missing, a safe fallback palette loads and a small notice appears.
+Each layer uses the next color from [`data/palette.json`](./data/palette.json). If the palette file is missing, a safe fallback loads and a small notice appears.
 
 ## Numerology
-Geometry routines reference sacred numbers (3, 7, 9, 11, 22, 33, 99, 144). These
-constants keep proportions meaningful while remaining static.
+Geometry routines reference sacred numbers 3, 7, 9, 11, 22, 33, 99, and 144 to keep proportions meaningful while staying static.
 
 ## Local Use
-Just double-click `index.html`. Everything is offline and self-contained.
-Static, offline HTML + Canvas renderer for layered sacred geometry.
-
-## Files
-- `index.html` — entry point; open directly without a server.
-- `js/helix-renderer.mjs` — ES module with pure drawing functions.
-- `data/palette.json` — optional palette override; delete to use built-in fallback.
-
-## Layers
-1. **Vesica field** — intersecting circles forming foundational geometry.
-2. **Tree-of-Life** — ten sephirot and twenty-two connecting paths.
-3. **Fibonacci curve** — logarithmic spiral honoring natural growth.
-4. **Double-helix lattice** — static twin sine links symbolizing duality.
+Double-click [index.html](./index.html) in any modern browser. The renderer depends on [`js/helix-renderer.mjs`](./js/helix-renderer.mjs) and optional [`data/palette.json`](./data/palette.json). Everything runs offline.
 
 ## ND-safe Notes
 - No motion or flashing; all elements render statically in layer order.
-- Palette uses gentle contrast for readability and reduced sensory load.
-- Geometry counts reference numerology constants (3,7,9,11,22,33,99,144).
-
-## Use
-Double-click `index.html` in any modern browser while offline. If `data/palette.json` is missing, the renderer notes this and applies a safe fallback palette.
-Static, offline sacred-geometry renderer.
-
-## Layers
-1. Vesica field - intersecting circles forming a calm grid.
-2. Tree-of-Life scaffold - ten sephirot and twenty-two paths.
-3. Fibonacci curve - logarithmic spiral derived from the golden ratio.
-4. Double-helix lattice - two phase-shifted strands with nine crossbars.
-
-## Usage
-Double-click "index.html" in any modern browser.
-Optional palette overrides live in "data/palette.json".
-No network calls; if the palette file is missing, safe defaults load.
-
-## ND-safe design
-No motion or animation.
-Soft contrast palette and generous spacing.
-Pure functions, ES modules, UTF-8 LF encoding.
-
-## Numerology constants
-3, 7, 9, 11, 22, 33, 99, 144
-
-
+- Palette uses gentle contrast for readability.
+- Pure functions, ES modules, UTF-8, and LF newlines.
