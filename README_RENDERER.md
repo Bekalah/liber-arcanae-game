@@ -1,5 +1,6 @@
 # Cosmic Helix Renderer
 
+
 Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open `index.html`
 in any modern browser. No build steps, no network requests.
 
@@ -18,3 +19,45 @@ constants keep proportions meaningful while remaining static.
 
 ## Local Use
 Just double-click `index.html`. Everything is offline and self-contained.
+Static, offline HTML + Canvas renderer for layered sacred geometry.
+
+## Files
+- `index.html` — entry point; open directly without a server.
+- `js/helix-renderer.mjs` — ES module with pure drawing functions.
+- `data/palette.json` — optional palette override; delete to use built-in fallback.
+
+## Layers
+1. **Vesica field** — intersecting circles forming foundational geometry.
+2. **Tree-of-Life** — ten sephirot and twenty-two connecting paths.
+3. **Fibonacci curve** — logarithmic spiral honoring natural growth.
+4. **Double-helix lattice** — static twin sine links symbolizing duality.
+
+## ND-safe Notes
+- No motion or flashing; all elements render statically in layer order.
+- Palette uses gentle contrast for readability and reduced sensory load.
+- Geometry counts reference numerology constants (3,7,9,11,22,33,99,144).
+
+## Use
+Double-click `index.html` in any modern browser while offline. If `data/palette.json` is missing, the renderer notes this and applies a safe fallback palette.
+Static, offline sacred-geometry renderer.
+
+## Layers
+1. Vesica field - intersecting circles forming a calm grid.
+2. Tree-of-Life scaffold - ten sephirot and twenty-two paths.
+3. Fibonacci curve - logarithmic spiral derived from the golden ratio.
+4. Double-helix lattice - two phase-shifted strands with nine crossbars.
+
+## Usage
+Double-click "index.html" in any modern browser.
+Optional palette overrides live in "data/palette.json".
+No network calls; if the palette file is missing, safe defaults load.
+
+## ND-safe design
+No motion or animation.
+Soft contrast palette and generous spacing.
+Pure functions, ES modules, UTF-8 LF encoding.
+
+## Numerology constants
+3, 7, 9, 11, 22, 33, 99, 144
+
+
