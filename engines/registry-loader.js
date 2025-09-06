@@ -5,4 +5,9 @@ export async function loadRegistry(url="/assets/data/registry.json"){
   if(!res.ok) throw new Error("Registry not found: "+url);
   const reg = await res.json();
   return reg;
+
+export async function loadRegistry(url="/assets/data/registry.json"){
+  const res = await fetch(url, {cache:"no-store"});
+  if(!res.ok) throw new Error("Registry not found: "+url);
+  return await res.json();
 }
