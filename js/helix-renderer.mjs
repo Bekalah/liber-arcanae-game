@@ -15,17 +15,21 @@
 export function renderHelix(ctx, opts) {
   const { width, height, palette, NUM } = opts;
   ctx.clearRect(0, 0, width, height);
+  // ND-safe palette: background filled first to avoid flashes
   ctx.fillStyle = palette.bg;
   ctx.fillRect(0, 0, width, height);
 
-  drawVesicaGrid(ctx, width, height, palette.layers[0], NUM);
+  // Layers are static: drawn once in order, no animation loop
+  drawVesica(ctx, width, height, palette.layers[0], NUM);
   drawTreeOfLife(ctx, width, height, palette.layers[1], NUM);
-  drawFibonacci(ctx, width, height, palette.layers[2], NUM);
+  drawFibonacciCurve(ctx, width, height, palette.layers[2], NUM);
   drawHelixLattice(ctx, width, height, palette.layers[3], palette.layers[4], NUM);
 }
 
-// Layer 1: Vesica grid
-function drawVesicaGrid(ctx, w, h, color, NUM) {
+// Layer 1: Vesica field
+// Pure function using only context and geometry parameters.
+// Static pattern; ND-safe contrast via provided color.
+function drawVesica(ctx, w, h, color, NUM) {
   ctx.strokeStyle = color;
   const cols = NUM.THREE;
   const rows = NUM.THREE;
@@ -43,19 +47,21 @@ function drawVesicaGrid(ctx, w, h, color, NUM) {
 }
 
 // Layer 2: Tree-of-Life scaffold
+// Static nodes and paths; palette color chosen for calm mid-tone.
 function drawTreeOfLife(ctx, w, h, color, NUM) {
   const nodes = [
-    [w / 2, h * 0.05], // 1 Kether
-    [w * 0.3, h * 0.18], // 2 Chokmah
-    [w * 0.7, h * 0.18], // 3 Binah
-    [w * 0.3, h * 0.35], // 4 Chesed
-    [w * 0.7, h * 0.35], // 5 Geburah
-    [w / 2, h * 0.5], // 6 Tiferet
-    [w * 0.3, h * 0.65], // 7 Netzach
-    [w * 0.7, h * 0.65], // 8 Hod
-    [w / 2, h * 0.8], // 9 Yesod
-    [w / 2, h * 0.95] // 10 Malkuth
+    [w / 2, h * 0.05],
+    [w * 0.3, h * 0.18],
+    [w * 0.7, h * 0.18],
+    [w * 0.3, h * 0.35],
+    [w * 0.7, h * 0.35],
+    [w / 2, h * 0.5],
+    [w * 0.3, h * 0.65],
+    [w * 0.7, h * 0.65],
+    [w / 2, h * 0.8],
+    [w / 2, h * 0.95]
   ];
+  // Twenty-two simplified paths; count mirrors NUM.TWENTYTWO
   const paths = [
     [0,1],[0,2],[1,2],[1,3],[2,4],[3,4],[3,5],[4,5],[3,6],[4,7],
     [5,6],[5,7],[6,7],[6,8],[7,8],[6,9],[7,9],[8,9],[1,5],[2,5],
@@ -72,15 +78,16 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
   });
   nodes.forEach(([x,y]) => {
     ctx.beginPath();
-    ctx.arc(x, y, 6, 0, Math.PI * 2);
+    ctx.arc(x, y, NUM.THREE, 0, Math.PI * 2);
     ctx.stroke();
   });
 }
 
 // Layer 3: Fibonacci curve
-function drawFibonacci(ctx, w, h, color, NUM) {
+// Rendered once to avoid motion; color from palette keeps contrast gentle.
+function drawFibonacciCurve(ctx, w, h, color, NUM) {
   const phi = (1 + Math.sqrt(5)) / 2;
-  const a = 4; // base radius
+  const a = NUM.THREE + 1; // base radius derived from numerology
   const center = { x: w * 0.75, y: h * 0.3 };
   ctx.strokeStyle = color;
   ctx.beginPath();
@@ -95,33 +102,36 @@ function drawFibonacci(ctx, w, h, color, NUM) {
 }
 
 // Layer 4: Double-helix lattice
+// Static lattice: two strands with fixed crossbars, no animation.
 function drawHelixLattice(ctx, w, h, colorA, colorB, NUM) {
-  const pointsA = [];
-  const pointsB = [];
+  const strandA = [];
+  const strandB = [];
   for (let i = 0; i <= NUM.NINETYNINE; i++) {
     const t = (i / NUM.NINETYNINE) * h;
     const phase = (i / NUM.ELEVEN) * Math.PI * 2;
     const xA = w * 0.25 + Math.sin(phase) * (w / NUM.TWENTYTWO);
     const xB = w * 0.75 + Math.sin(phase + Math.PI) * (w / NUM.TWENTYTWO);
-    pointsA.push([xA, t]);
-    pointsB.push([xB, t]);
+    strandA.push([xA, t]);
+    strandB.push([xB, t]);
   }
   ctx.strokeStyle = colorA;
   ctx.beginPath();
-  pointsA.forEach(([x,y],i)=>{ if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
+  strandA.forEach(([x,y],i)=>{ if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
   ctx.stroke();
   ctx.strokeStyle = colorB;
   ctx.beginPath();
-  pointsB.forEach(([x,y],i)=>{ if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
+  strandB.forEach(([x,y],i)=>{ if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
   ctx.stroke();
+  // Crossbars hint at DNA ladder; count based on NUM.NINE
   ctx.strokeStyle = colorB;
   for (let i = 0; i <= NUM.NINE; i++) {
-    const idx = i * Math.floor(pointsA.length / NUM.NINE);
-    const [x1, y1] = pointsA[idx];
-    const [x2, y2] = pointsB[idx];
+    const idx = i * Math.floor(strandA.length / NUM.NINE);
+    const [x1, y1] = strandA[idx];
+    const [x2, y2] = strandB[idx];
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
   }
 }
+
