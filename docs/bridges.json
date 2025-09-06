@@ -1,0 +1,9 @@
+{
+  "version":"1.0.0",
+  "major_arcana_to_codex":[
+    {"card":"The Fool","node_id":1},
+    {"card":"The Magus","node_id":2}
+  ],
+  "fibonacci_steps":[1,1,2,3,5,8,13,21,34,55,89,144],
+  "notes":"This file records the crosswalk; runtime reads; source of truth remains per-repo."
+}
