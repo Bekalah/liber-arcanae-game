@@ -1,5 +1,9 @@
 # ============================================
 # LIBER-ARCANAE -- one-paste repo bootstrap
+# LIBER-ARCANAE — one-paste repo bootstrap (fixed)
+# ============================================
+set -euo pipefail
+# LIBER-ARCANAE — one-paste repo bootstrap
 # ============================================
 set -e
 
@@ -36,6 +40,9 @@ EOF
 
 cat > README.md <<'EOF'
 # ✦ Liber Arcanae -- Living Tarot of Codex 144:99
+cat > README.md <<‘EOF’
+# ✦ Liber Arcanae — Living Tarot of Codex 144:99
+Umbrella: **Cathedral of Circuits** · Engine: **Codex 144:99** · System: **Living Tarot (Liber Arcanae)**  
 Umbrella: **Cathedral of Circuits** · Engine: **Codex 144:99** · System: **Living Tarot (Liber Arcanae)**
 Author: **Rebecca Susan Lemke (Rebecca Respawn)** · ORCID **0009-0002-2834-3956**
 
@@ -60,6 +67,8 @@ This deck is a living Monad Hieroglyphica: each card = a programmable node linke
 EOF
 
 # 3) docs -----------------------------------------------
+# 3) docs ———————————————————————
+# 3) docs -———————————————————————
 mkdir -p docs
 cat > docs/codex_abyssiae_master.md <<'EOF'
 # Codex Abyssiae Master File (SEAL)
@@ -68,6 +77,14 @@ EOF
 
 # (optional supporting docs - lightweight placeholders you can expand)
 cat > docs/provenance.md <<'EOF'
+cat > docs/provenance.md <<‘EOF’
+Provenance: Dee (Monas), Agrippa & Goetia (Rudd), Splendor Solis, Case & Fortune, Regardie, Ars Notoria.
+Psychology: Gabor Maté, Robert Falconer, Paul Levy. Tara/Quan Yin compassion layer.
+EOF
+
+# 4) core UI ———————————————————————
+# (optional supporting docs – lightweight placeholders you can expand)
+cat > docs/provenance.md <<‘EOF’
 Provenance: Dee (Monas), Agrippa & Goetia (Rudd), Splendor Solis, Case & Fortune, Ars Notoria.
 Psychology: Gabor Maté, Robert Falconer, Paul Levy. Tara/Quan Yin compassion layer.
 EOF
@@ -126,6 +143,20 @@ cat > core/index.html <<'EOF'
           <div class="corner tr" id="cornerPlanet"></div>
           <div class="corner bl" id="cornerAngel"></div>
           <div class="corner br" id="cornerDemon"></div>
+  <main class=“cathedral”>
+    <aside class=“deck-list” id=“
+    <aside class=“deck-list” id=“deckList” aria-label=“Cards”></aside>
+    <section class=“card-stage” aria-live=“polite”>
+      <article id=“card” class=“abyssia-card”>
+        <div class=“layer bg”></div>
+        <div class=“layer pigment”></div>
+        <div class=“layer halo”></div>
+
+        <div class=“corners”>
+          <div class=“corner tl” id=“cornerNum”></div>
+          <div class=“corner tr” id=“cornerPlanet”></div>
+          <div class=“corner bl” id=“cornerAngel”></div>
+          <div class=“corner br” id=“cornerDemon”></div>
         </div>
 
         <div class="centerpiece">
@@ -524,3 +555,7 @@ git commit -m "feat(liber-arcanae): bootstrap deck UI, engine, compiler, ND-safe
 echo "✔ Repo scaffolded. Next: paste your sealed docs/codex_abyssiae_master.md, then run:"
 echo "    python tools/registry_compile.py"
 echo "    open core/index.html"
+git commit -m “feat(liber-arcanae): bootstrap deck UI, engine, compiler, ND-safe defaults”
+echo “✔ Repo scaffolded. Next: paste your sealed docs/codex_abyssiae_master.md, then run:”
+echo “    python tools/registry_compile.py”
+echo “    open core/index.html”
