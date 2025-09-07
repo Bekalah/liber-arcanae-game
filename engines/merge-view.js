@@ -1,5 +1,4 @@
 
-
 // Merge strategy is "view composition"; does not mutate sources; prefer deep-freeze snapshots.
 
 export function composeView({palettes=[], geometry_layers=[], narrative_nodes=[]}, overlays={}){
