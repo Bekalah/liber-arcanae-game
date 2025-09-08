@@ -12,6 +12,7 @@
 - Create identity anchors for other archetypes (e.g., Miribelle Vespertine) before layering fusion overlays.
 - Document best practices for ND-safe palettes and geometry constants.
 
+=======
 # Task List
 
 ## Working
