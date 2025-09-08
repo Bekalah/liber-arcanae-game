@@ -21,6 +21,7 @@ export function renderHelix(ctx, opts) {
   ctx.fillStyle = palette.bg;
   ctx.fillRect(0, 0, width, height);
 
+  // Layer order preserves depth: base geometry first, lattice last
   drawVesica(ctx, width, height, palette.layers[0], NUM);
   drawTreeOfLife(ctx, width, height, palette.layers[1], NUM);
   drawFibonacciCurve(ctx, width, height, palette.layers[2], NUM);
@@ -31,7 +32,7 @@ export function renderHelix(ctx, opts) {
 function drawVesica(ctx, w, h, color, NUM) {
   const cols = NUM.THREE;
   const rows = NUM.THREE;
-  const r = Math.min(w, h) / NUM.NINE;
+  const r = Math.min(w, h) / NUM.NINE; // ND-safe: gentle radius balances the grid
   ctx.strokeStyle = color;
   ctx.lineWidth = 2;
   for (let j = 0; j < rows; j++) {
@@ -52,7 +53,7 @@ function drawVesica(ctx, w, h, color, NUM) {
 function drawTreeOfLife(ctx, w, h, color, NUM) {
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 1; // ND-safe: thin lines keep focus soft
 
   const nodes = [
     [w / 2, h * 0.05],
@@ -114,7 +115,7 @@ function drawHelixLattice(ctx, w, h, color, NUM) {
   const amp = h / NUM.NINE;
   const mid = h / 2;
   ctx.strokeStyle = color;
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 1; // ND-safe: fine lines keep lattice subtle
 
   // strand A
   ctx.beginPath();
@@ -135,7 +136,7 @@ function drawHelixLattice(ctx, w, h, color, NUM) {
   ctx.stroke();
 
   // crossbars every 16 steps (approx 144/9)
-  const barStep = Math.floor(steps / NUM.NINE);
+  const barStep = Math.floor(steps / NUM.NINE); // ND-safe: static crossbars provide calm symmetry
   for (let i = 0; i <= steps; i += barStep) {
     const x = (i / steps) * w;
     const y1 = mid + amp * Math.sin(i / NUM.ELEVEN);
