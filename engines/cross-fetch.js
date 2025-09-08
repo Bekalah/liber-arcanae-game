@@ -1,5 +1,4 @@
 
-
 // Safe loader for foreign repo JSON by path hints in registry; forbids writing.
 
 export async function loadFromRepo(registry, repoName, relPath){
