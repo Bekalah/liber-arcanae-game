@@ -6,7 +6,7 @@
     1) Vesica field
     2) Tree-of-Life scaffold
     3) Fibonacci curve
-    4) Double-helix lattice
+    4) Double-helix lattice (two phase-shifted strands with calm crossbars)
 
   Rationale:
     - No motion or autoplay; everything renders once.
