@@ -3,11 +3,15 @@ Per Texturas Numerorum, Spira Loquitur.  //
 # ✦ LIBER ARCANAE: CODEX ABYSSIAE
 *Abyssian Tarot of the Living Monad Hieroglyphica*  
 
-**Author:** Rebecca Susan Lemke (*Rebecca Respawn*)  
-**Pen Name:** Rebecca Respawn  
-**ORCID:** 0009-0002-2834-3956  
-**Affiliation:** International Alchemy Guild  
-**Numerology:** 22 (Master Builder)  
+**Author:** Rebecca Susan Lemke (*Rebecca Respawn*)
+**Pen Name:** Rebecca Respawn
+**ORCID:** 0009-0002-2834-3956
+**License:** CC0 1.0 Universal (Sacred Copy Rite preserved through provenance)
+**Affiliation:** International Alchemy Guild
+**Numerology:** 22 (Master Builder)
+
+Solve et Coagula. In Codice Abyssiae, Angelus et Daemon concordant. Ordo in aeternum resonat.
+This Codex is not flat data. Each card, node, or room is a living egregore, ND-safe healing tool, and playable portal.
 
 ---
 
@@ -84,55 +88,122 @@ Per Texturas Numerorum, Spira Loquitur.  //
 
 # ✦ MAJOR ARCANA REGISTRY
 
-*(0–XXI, all 22 fully expanded as in Segments 2a + 2b — omitted here for brevity in this display, but included in your repo copy.)*
+MA00 Fool — Rebecca Respawn — Aleph — initiate_zero
+MA01 Magician — Virelai Ezra Lux — Beth — octarine_witch
+MA02 High Priestess — Gemini Rivers — Gimel — twin_rivers
+MA03 Empress — Ann Abyss — Daleth — grief_queen
+MA04 Emperor — Zidaryen — Heh — forest_keeper
+MA05 Hierophant — Winne Reweave — Vav — oracle_weaver
+MA06 Lovers — Bea Betwixted — Zayin — threshold_weaver
+MA07 Chariot — IGNI (Raku Dragon) — Cheth — fire_chariot
+MA08 Strength — Morticia Moonbeamer — Teth — rainbow_dark
+MA09 Hermit — Amiyara Skye — Yod — lantern_witch
+MA10 Wheel of Fortune — Cael Umbra — Kaph — fate_wheel
+MA11 Justice — Elyria Nox — Lamed — black_balance
+MA12 Hanged Man — Mirror Witch — Mem — reflection_trial
+MA13 Death — Ann Abyss (Shadow) — Nun — void_gate
+MA14 Temperance — Lyra Vox — Samekh — harmonic_oracle
+MA15 Devil — Scarlet Lady — Ayin — scarlet_bind
+MA16 Tower — Fenrix Thorne — Pe — iron_tower
+MA17 Star — Sophia/Gnosis — Tzaddi — wisdom_stream
+MA18 Moon — Moonchild 2000 — Qoph — dream_gate
+MA19 Sun — Rebecca Respawn (Solar Double) — Resh — resurrection
+MA20 Judgement — Sekhara — Shin — descent_rebirth
+MA21 World — LuxCrux Monad — Tav — infinity_cross
 
 ---
 
 # ✦ MINOR ARCANA — WANDS (SULPHUR / FIRE)
 
-*(All 14 Wands cards, Ace → King, with layers.)*
+Ace Spark of IGNI
+Two Twin Flames
+Three Expansive Vision
+Four Sanctuary Portal
+Five Creative Clash
+Six Victory of Fire
+Seven Defender of Truth
+Eight Rapid Sparks
+Nine Wounded Flame
+Ten Burden of Passion
+Page Ignition Apprentice
+Knight Dragon Rider
+Queen Flame Sorceress
+King Fire Sovereign
 
 ---
 
 # ✦ MINOR ARCANA — CUPS (MERCURY / WATER)
 
-*(All 14 Cups cards, Ace → King, with layers.)*
+Ace Fountain of Gemini
+Two Sacred Union
+Three Coven Dance
+Four Moonlit Reflection
+Five Grief Chalice
+Six Childhood Memory
+Seven Dream Labyrinth
+Eight Leaving the Old
+Nine Wish Well
+Ten Rainbow Covenant
+Page Siren Initiate
+Knight River Rider
+Queen Empath Oracle
+King Ocean Sovereign
 
 ---
 
 # ✦ MINOR ARCANA — PENTACLES (SALT / EARTH)
 
-*(All 14 Pentacles cards, Ace → King, with layers.)*
+Ace Stone Seed
+Two Balance in Motion
+Three Craft Guild
+Four Holding Power
+Five Exile Gate
+Six Reciprocity
+Seven Harvest Waiting
+Eight Artisan’s Spiral
+Nine Garden Sovereign
+Ten Ancestral House
+Page Apprentice of Earth
+Knight Stone Rider
+Queen Gaian Matron
+King Earth Sovereign
 
 ---
 
 # ✦ MINOR ARCANA — SWORDS (ASH / AIR)
 
-*(All 14 Swords cards, Ace → King, with layers.)*
+Ace Truth Spark
+Two Crossroads
+Three Heartbreak Sigil
+Four Silent Rest
+Five Discord Cut
+Six River Passage
+Seven Shadow Theft
+Eight Mirror Prison
+Nine Nightmare Echo
+Ten Final Collapse
+Page Apprentice of Winds
+Knight Storm Rider
+Queen Shadow Queen
+King Air Sovereign
 
 ---
 
 # ✦ SPREADS OF ABYSSIA
 
-1. **Magnum Opus Spread (4)** → Nigredo, Albedo, Citrinitas, Rubedo.  
-2. **Monad Spread (5)** → Sun, Moon, Cross, Fire/Spirit, Self.  
-3. **Double Tree Spread (10 + 22)** → Sephiroth + paths of Jacob’s Ladder.  
-4. **Spine Spread (33)** → One card per vertebra of the Codex spine.  
-5. **Tara Wheel Spread (22)** → Each Major paired with a Tara/Quan Yin.
+- Magnum Opus Spread (Nigredo, Albedo, Citrinitas, Rubedo)
+- Monad Spread (Triune glyph)
+- Double Tree Spread (Qabalistic overlay)
+- Spine Spread (33 vertebrae)
+- Tara Wheel (21 emanations)
+
+Each spread doubles as a ritual map, Reiki crystal grid, and narrative key in the Cathedral.
 
 ---
 
 # ✦ PORTAL INTEGRATION
 
-- **Visuals[]** → pigments, yantras, fractals.  
-- **Music[]** → planetary tones + Solfeggio.  
-- **Learning[]** → Ars Notoria mnemonics, Soyga cipher.  
-- **Game[]** → realm trials, NPC daimons, artifacts.  
-- **Artifact[]** → Staffs, Chalices, Coins, Blades.  
-
-**Crystal Reiki Mode:** spreads auto-generate crystal grids with BioGeometry rays + binaural tones.  
-
-**Unity Function:** 72 Angels + 72 Demons reconciled, guarded by Consecration Angels (Echols).  
+In Stone-Grimoire, Tarot cards manifest as chapel artifacts and portals; in Cosmogenesis, they serve as Notoria sigils and nodal study engines; in Circuitum99, they are world entry nodes for playable adventures; in Liber-Arcanae, they are living Tarot servitors.
 
 ---
 
@@ -165,9 +236,8 @@ Per Texturas Numerorum, Spira Loquitur.  //
 - A scientific-metaphysical research tool.  
 - A game + learning engine.  
 
-This document is `codex_abyssiae_master.md`, for integration into:  
-- `/Stone-Grimoire/`  
-- `/Cosmogenesis-Learning-Engine/`  
-- `/Circuitum99-Alpha-Omega/`
+This file is to be mirrored across repos. In circuitum99, it anchors `/REGISTRY`. In cosmogenesis-learning-engine, it maps into node schemas. In stone-cathedral, it serves as PORTAL registry. In liber-arcanae, it is the canonical Tarot deck codex.
 
 ---
+
+Closing seal: *Solve et Coagula. In Codice Abyssiae, Angelus et Daemon concordant.*
