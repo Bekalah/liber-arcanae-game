@@ -1,0 +1,26 @@
+{
+  "major": [
+    {"id":"MA00","name":"The Fool","codex":"initiate_zero","letter":"Aleph","planet":"Air","shem":[1,2,3],"goet":[1,2,3]},
+    {"id":"MA01","name":"The Magician","codex":"octarine_witch","letter":"Beth","planet":"Mercury","shem":[4,5,6],"goet":[4,5,6]},
+    {"id":"MA02","name":"The High Priestess","codex":"twin_rivers","letter":"Gimel","planet":"Moon","shem":[7,8,9],"goet":[7,8,9]},
+    {"id":"MA03","name":"The Empress","codex":"grief_queen","letter":"Daleth","planet":"Venus","shem":[10,11,12],"goet":[10,11,12]},
+    {"id":"MA04","name":"The Emperor","codex":"forest_keeper","letter":"Heh","planet":"Aries","shem":[13,14,15],"goet":[13,14,15]},
+    {"id":"MA05","name":"The Hierophant","codex":"oracle_weaver","letter":"Vav","planet":"Taurus","shem":[16,17,18],"goet":[16,17,18]},
+    {"id":"MA06","name":"The Lovers","codex":"threshold_weaver","letter":"Zayin","planet":"Gemini","shem":[19,20,21],"goet":[19,20,21]},
+    {"id":"MA07","name":"The Chariot","codex":"fire_chariot","letter":"Cheth","planet":"Cancer","shem":[22,23,24],"goet":[22,23,24]},
+    {"id":"MA08","name":"Strength","codex":"rainbow_dark","letter":"Teth","planet":"Leo","shem":[25,26,27],"goet":[25,26,27]},
+    {"id":"MA09","name":"The Hermit","codex":"lantern_witch","letter":"Yod","planet":"Virgo","shem":[28,29,30],"goet":[28,29,30]},
+    {"id":"MA10","name":"Wheel of Fortune","codex":"fate_wheel","letter":"Kaph","planet":"Jupiter","shem":[31,32,33],"goet":[31,32,33]},
+    {"id":"MA11","name":"Justice","codex":"black_balance","letter":"Lamed","planet":"Libra","shem":[34,35,36],"goet":[34,35,36]},
+    {"id":"MA12","name":"The Hanged Man","codex":"reflection_trial","letter":"Mem","planet":"Water","shem":[37,38,39],"goet":[37,38,39]},
+    {"id":"MA13","name":"Death","codex":"void_gate","letter":"Nun","planet":"Scorpio","shem":[40,41,42],"goet":[40,41,42]},
+    {"id":"MA14","name":"Temperance","codex":"harmonic_oracle","letter":"Samekh","planet":"Sagittarius","shem":[43,44,45],"goet":[43,44,45]},
+    {"id":"MA15","name":"The Devil","codex":"scarlet_bind","letter":"Ayin","planet":"Capricorn","shem":[46,47,48],"goet":[46,47,48]},
+    {"id":"MA16","name":"The Tower","codex":"iron_tower","letter":"Pe","planet":"Mars","shem":[49,50,51],"goet":[49,50,51]},
+    {"id":"MA17","name":"The Star","codex":"wisdom_stream","letter":"Tzaddi","planet":"Aquarius","shem":[52,53,54],"goet":[52,53,54]},
+    {"id":"MA18","name":"The Moon","codex":"dream_gate","letter":"Qoph","planet":"Pisces","shem":[55,56,57],"goet":[55,56,57]},
+    {"id":"MA19","name":"The Sun","codex":"resurrection","letter":"Resh","planet":"Sun","shem":[58,59,60],"goet":[58,59,60]},
+    {"id":"MA20","name":"Judgement","codex":"descent_rebirth","letter":"Shin","planet":"Fire","shem":[61,62,63],"goet":[61,62,63]},
+    {"id":"MA21","name":"The World","codex":"infinity_cross","letter":"Tav","planet":"Saturn","shem":[64,65,66],"goet":[64,65,66]}
+  ]
+}
