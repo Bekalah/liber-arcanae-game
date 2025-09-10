@@ -6,7 +6,7 @@ Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open [index.h
 
 ## Layers
 1. **Vesica field** – intersecting circles laid out with the constant 3.
-2. **Tree-of-Life** – ten sephirot with twenty-two connecting paths.
+2. **Tree-of-Life** – ten sephirot with twenty-two connecting paths (runtime check keeps the count at 22).
 3. **Fibonacci curve** – fixed logarithmic spiral honoring natural growth.
 4. **Double-helix lattice** – two phase-shifted strands with calm crossbars.
 
