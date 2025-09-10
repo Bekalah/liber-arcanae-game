@@ -22,3 +22,6 @@ living tarot repo that connects to the other apps
 
 ## Development helpers
 Run `node tools/dedupe-lines.mjs` to remove accidental duplicate lines. To automate, copy `tools/pre-commit` to `.git/hooks/pre-commit`.
+
+## Numerology
+Spiral-coded constants guide the design. See [docs/numerology_spiral_grammar.md](./docs/numerology_spiral_grammar.md) for the full breakdown from 21 pillars to 243 completion.
