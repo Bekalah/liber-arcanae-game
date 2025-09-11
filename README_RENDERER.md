@@ -10,6 +10,8 @@ Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open [index.h
 3. **Fibonacci curve** – fixed logarithmic spiral honoring natural growth.
 4. **Double-helix lattice** – two phase-shifted strands with calm crossbars.
 
+Canonical IDs tag the scaffold: nodes are `C144N-001` through `C144N-010` and gates use `G-099-01` to `G-099-22`.
+
 Each layer uses the next color from [`data/palette.json`](./data/palette.json). If the palette file is missing, a safe fallback loads and a small notice appears.
 
 ## Numerology
