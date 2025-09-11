@@ -1,0 +1,9 @@
+{
+  "id": "LA-17-STAR",
+  "effects": [
+    {"type": "overlay", "name": "calm", "intensity": 0.6},
+    {"type": "palette_blend", "tokens": ["rose-quartz", "teal-glow"]},
+    {"type": "unlock", "target": "C144N-034", "mode": "Art"}
+  ],
+  "safety": {"strobe": false, "autoplay": false, "motion": "calm"}
+}
