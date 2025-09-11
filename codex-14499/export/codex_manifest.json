@@ -1,0 +1,11 @@
+{
+  "manifest": "codex",
+  "version": "1.0.0",
+  "constants": [21,33,72,78,99,144,243],
+  "axioms": {
+    "one_card_one_slot": true,
+    "fibonacci_spiral_grammar": true,
+    "nd_safe_protocol": true
+  },
+  "notes": "Codex-144:99 anchors numerology, provenance, and standards."
+}

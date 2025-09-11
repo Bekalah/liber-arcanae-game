@@ -1,0 +1,15 @@
+{
+  "manifest": "arcana",
+  "version": "1.0.0",
+  "cards": {
+    "The Fool": { "lineage": "Rebecca Respawn", "overlays": ["tara","shem","tone","astro"] },
+    "The Hierophant": { "lineage": "Moonchild", "overlays": ["tara","tone","astro"] },
+    "The Tower": { "lineage": "Aleister Crowley", "overlays": ["shem","tone","astro"] },
+    "Aeon": { "lineage": "Aleister Crowley", "overlays": ["tone","astro"] },
+    "The High Priestess": { "lineage": "Dion Fortune", "overlays": ["tara","tone","astro"] },
+    "The Hanged Man": { "lineage": "Frater Achad", "overlays": ["tone","astro"] },
+    "The Magician": { "lineage": "H. C. Agrippa", "overlays": ["shem","tone","astro"] },
+    "Temperance": { "lineage": "Paul Foster Case", "overlays": ["tone","astro"] },
+    "Justice": { "lineage": "Stephen Skinner", "overlays": ["shem","tone","astro"] }
+  }
+}

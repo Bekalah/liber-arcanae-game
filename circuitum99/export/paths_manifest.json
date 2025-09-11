@@ -1,0 +1,15 @@
+{
+  "manifest": "paths",
+  "version": "1.0.0",
+  "tarot_paths": {
+    "The Fool":        { "chapter": 1,  "entry": "fool_axis_intro",       "notes": "Antahkarana entry / sovereignty" },
+    "The Hierophant":  { "chapter": 5,  "entry": "moonchild_pillars",      "notes": "twin pillars; pedagogy" },
+    "The Tower":       { "chapter": 16, "entry": "aeonic_spiral",          "notes": "shock → sovereignty" },
+    "Aeon":            { "chapter": 20, "entry": "aeon_variant",           "notes": "optional key" },
+    "The High Priestess": { "chapter": 2, "entry": "avalon_veil",         "notes": "mirror/veil trials" },
+    "The Hanged Man":  { "chapter": 12, "entry": "daath_bridge",           "notes": "paradox / inversion" },
+    "The Magician":    { "chapter": 1,  "entry": "elemental_orrery",       "notes": "heptagram / seals" },
+    "Temperance":      { "chapter": 14, "entry": "prismatic_harmonics",    "notes": "cube-of-space / tone" },
+    "Justice":         { "chapter": 11, "entry": "angelic_geomancy",       "notes": "watchtowers / figures" }
+  }
+}
