@@ -24,4 +24,3 @@ Everything runs offline.
 - No motion or flashing; all elements render statically in layer order.
 - Palette uses gentle contrast for readability.
 - Pure functions, ES modules, UTF-8, and LF newlines.
-
