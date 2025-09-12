@@ -1,0 +1,10 @@
+{
+  "manifest": "realms",
+  "version": "1.0.0",
+  "realms": {
+    "Avalon": { "doors": ["veil_gate","chalice_well"], "binds_to": ["The High Priestess"] },
+    "Cathedral_Nave": { "doors": ["antahkarana_rise"], "binds_to": ["The Fool","The Hierophant"] },
+    "Orrery_Dome": { "doors": ["planet_hour_gate"], "binds_to": ["The Magician"] },
+    "Watchtower_Atrium": { "doors": ["angelic_names_puzzle"], "binds_to": ["Justice"] }
+  }
+}
