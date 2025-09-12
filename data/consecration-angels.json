@@ -1,0 +1,8 @@
+{
+  "Michael":   { "planet": "Sun",    "sigil": "☉", "color": "#FFD700", "role": "Guardian of illumination" },
+  "Gabriel":   { "planet": "Moon",   "sigil": "☽", "color": "#C0C0C0", "role": "Messenger of dreams" },
+  "Raphael":   { "planet": "Mercury", "sigil": "☿", "color": "#3CB371", "role": "Healer of paths" },
+  "Tzaphkiel": { "planet": "Saturn", "sigil": "♄", "color": "#483D8B", "role": "Watcher of depth" },
+  "Haniel":    { "planet": "Venus",  "sigil": "♀", "color": "#FF69B4", "role": "Harmonizer of love" },
+  "Uriel":     { "planet": "Earth",  "sigil": "⊕", "color": "#DAA520", "role": "Keeper of ground" }
+}
