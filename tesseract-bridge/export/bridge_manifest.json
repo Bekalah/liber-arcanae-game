@@ -1,0 +1,17 @@
+{
+  "manifest": "bridge",
+  "version": "1.0.0",
+  "expects": {
+    "codex":   "../extern/codex-14499/export/codex_manifest.json",
+    "engine":  "../extern/cosmogenesis-learning-engine/export/engine_manifest.json",
+    "geometry":"../extern/stone-grimoire/export/geometry_manifest.json",
+    "paths":   "../extern/circuitum99/export/paths_manifest.json",
+    "arcana":  "../extern/liber-arcanae/export/arcana_manifest.json",
+    "toggle":  "../extern/liber-arcanae-game/export/toggle_manifest.json",
+    "realms":  "../extern/magical-mystery-house/export/realm_manifest.json"
+  },
+  "rules": {
+    "one_card_one_slot": true,
+    "geometry_modes": ["octagram","tesseract","hexagram","antahkarana"]
+  }
+}

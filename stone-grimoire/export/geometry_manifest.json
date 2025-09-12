@@ -1,0 +1,11 @@
+{
+  "manifest": "geometry",
+  "version": "1.0.0",
+  "vaults": {
+    "octagram":   { "slots": [1,2,3,4], "renderer": "octagram_vault",   "nd_safe": true },
+    "tesseract":  { "slots": [1,2,3,4], "renderer": "tesseract_corridor","nd_safe": true },
+    "hexagram":   { "slots": [1,2,3,4], "renderer": "hexagram_dome",     "nd_safe": true },
+    "antahkarana":{ "slots": [1,2,3,4], "renderer": "antahkarana_axis",  "nd_safe": true }
+  },
+  "notes": "Atelier/visionary quality, calm lighting. No SVG/helix fallbacks."
+}
