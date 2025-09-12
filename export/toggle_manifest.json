@@ -1,3 +1,18 @@
 {
   "paths": []
+  "manifest": "toggle",
+  "version": "1.0.0",
+  "layer_map": {
+    "The Fool":         { "GEOMETRY": "antahkarana", "SLOT": 1, "SPELL": "Serpent_of_Sophia" },
+    "The Hierophant":   { "GEOMETRY": "antahkarana", "SLOT": 2, "SPELL": "Twin_Pillar_Invocation" },
+    "The Tower":        { "GEOMETRY": "hexagram",    "SLOT": 1, "SPELL": "Liber_Samekh_Path" },
+    "Aeon":             { "GEOMETRY": "hexagram",    "SLOT": 2, "SPELL": "Aeonic_Spiral_Key" },
+    "The High Priestess": { "GEOMETRY": "octagram",  "SLOT": 1, "SPELL": "Rose_Cross_Hygiene" },
+    "The Hanged Man":   { "GEOMETRY": "tesseract",   "SLOT": 1, "SPELL": "Maat_Feather_Balance" },
+    "The Magician":     { "GEOMETRY": "hexagram",    "SLOT": 3, "SPELL": "Planetary_Pentacle_Call" },
+    "Temperance":       { "GEOMETRY": "octagram",    "SLOT": 2, "SPELL": "Color_Tone_Fusion" },
+    "Justice":          { "GEOMETRY": "tesseract",   "SLOT": 2, "SPELL": "Enochian_Key_Reorder" }
+  },
+  "nd_safe": true,
+  "one_per_node": true
 }

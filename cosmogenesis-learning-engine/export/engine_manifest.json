@@ -1,0 +1,8 @@
+{
+  "manifest": "engine",
+  "version": "1.0.0",
+  "lattice": { "constants": [21,33,72,78,99,144,243], "fibonacci": true, "solfeggio": true },
+  "geometry_modes": ["octagram","tesseract","hexagram","antahkarana"],
+  "tone_map": "bota-lite",
+  "nd_safe": { "strobe": false, "safe_stop": true, "intensity_slider": true }
+}
