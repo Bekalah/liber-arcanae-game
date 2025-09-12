@@ -57,31 +57,51 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
   ctx.lineWidth = 1; // ND-safe: thin lines keep focus soft
 
   const nodes = [
-    [w / 2, h * 0.05],
-    [w * 0.3, h * 0.18],
-    [w * 0.7, h * 0.18],
-    [w * 0.3, h * 0.35],
-    [w * 0.7, h * 0.35],
-    [w / 2, h * 0.5],
-    [w * 0.3, h * 0.65],
-    [w * 0.7, h * 0.65],
-    [w / 2, h * 0.8],
-    [w / 2, h * 0.95]
+    { id: "C144N-001", x: w / 2, y: h * 0.05 },
+    { id: "C144N-002", x: w * 0.3, y: h * 0.18 },
+    { id: "C144N-003", x: w * 0.7, y: h * 0.18 },
+    { id: "C144N-004", x: w * 0.3, y: h * 0.35 },
+    { id: "C144N-005", x: w * 0.7, y: h * 0.35 },
+    { id: "C144N-006", x: w / 2, y: h * 0.5 },
+    { id: "C144N-007", x: w * 0.3, y: h * 0.65 },
+    { id: "C144N-008", x: w * 0.7, y: h * 0.65 },
+    { id: "C144N-009", x: w / 2, y: h * 0.8 },
+    { id: "C144N-010", x: w / 2, y: h * 0.95 }
   ];
+  const nodeMap = Object.fromEntries(nodes.map(n => [n.id, n]));
 
   const paths = [
-    [0,1],[0,2],[1,2],[1,3],[2,4],[3,4],[3,5],[4,5],[3,6],[4,7],
-    [5,6],[5,7],[6,7],[6,8],[7,8],[6,9],[7,9],[8,9],[1,5],[2,5],
-    [0,5],[5,9]
+    { id: "G-099-01", a: "C144N-001", b: "C144N-002" },
+    { id: "G-099-02", a: "C144N-001", b: "C144N-003" },
+    { id: "G-099-03", a: "C144N-002", b: "C144N-003" },
+    { id: "G-099-04", a: "C144N-002", b: "C144N-004" },
+    { id: "G-099-05", a: "C144N-003", b: "C144N-005" },
+    { id: "G-099-06", a: "C144N-004", b: "C144N-005" },
+    { id: "G-099-07", a: "C144N-004", b: "C144N-006" },
+    { id: "G-099-08", a: "C144N-005", b: "C144N-006" },
+    { id: "G-099-09", a: "C144N-004", b: "C144N-007" },
+    { id: "G-099-10", a: "C144N-005", b: "C144N-008" },
+    { id: "G-099-11", a: "C144N-006", b: "C144N-007" },
+    { id: "G-099-12", a: "C144N-006", b: "C144N-008" },
+    { id: "G-099-13", a: "C144N-007", b: "C144N-008" },
+    { id: "G-099-14", a: "C144N-007", b: "C144N-009" },
+    { id: "G-099-15", a: "C144N-008", b: "C144N-009" },
+    { id: "G-099-16", a: "C144N-007", b: "C144N-010" },
+    { id: "G-099-17", a: "C144N-008", b: "C144N-010" },
+    { id: "G-099-18", a: "C144N-009", b: "C144N-010" },
+    { id: "G-099-19", a: "C144N-002", b: "C144N-006" },
+    { id: "G-099-20", a: "C144N-003", b: "C144N-006" },
+    { id: "G-099-21", a: "C144N-001", b: "C144N-006" },
+    { id: "G-099-22", a: "C144N-006", b: "C144N-010" }
   ];
   // honour NUM.TWENTYTWO: ensure path count stays aligned with 22
   if (paths.length !== NUM.TWENTYTWO) {
     console.warn("Tree-of-Life path count expected", NUM.TWENTYTWO, "got", paths.length);
   }
 
-  for (const [a, b] of paths) {
-    const [ax, ay] = nodes[a];
-    const [bx, by] = nodes[b];
+  for (const { a, b } of paths) {
+    const { x: ax, y: ay } = nodeMap[a];
+    const { x: bx, y: by } = nodeMap[b];
     ctx.beginPath();
     ctx.moveTo(ax, ay);
     ctx.lineTo(bx, by);
@@ -89,7 +109,7 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
   }
 
   const r = NUM.NINE; // gentle node radius
-  for (const [x, y] of nodes) {
+  for (const { x, y } of nodes) {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
     ctx.fill();
