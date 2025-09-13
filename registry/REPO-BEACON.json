@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "_about": "Codex 144:99 — Repo Presence Beacon",
+  "alias": "liber-arcanae-game",
+  "name": "Liber Arcanae — Game Engine",
+  "version": "1.0.0",
+  "updated": "2025-09-13T00:00:00Z",
+  "mounts": {
+    "local": "registry/import/",
+    "packs_glob": "registry/import/codex-pack-*.json"
+  },
+  "capabilities": {
+    "codex_nodes": true,
+    "tesseract_scenes": true,
+    "stone_grimoire_chapels": false,
+    "tarot_os_bridge": true
+  },
+  "provenance": {
+    "architect_scribe": "Rebecca Respawn",
+    "license": "CC-BY",
+    "protect": "PROTECT.md"
+  }
+}
