@@ -98,10 +98,6 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
   if (paths.length !== NUM.TWENTYTWO) {
     console.warn("Tree-of-Life path count expected", NUM.TWENTYTWO, "got", paths.length);
   }
-    [0,1],[0,2],[1,2],[1,3],[2,4],[3,4],[3,5],[4,5],[3,6],[4,7],
-    [5,6],[5,7],[6,7],[6,8],[7,8],[6,9],[7,9],[8,9],[1,5],[2,5],
-    [0,5],[5,9]
-  ]; // 22 paths honoring NUM.TWENTYTWO
 
   for (const { a, b } of paths) {
     const { x: ax, y: ay } = nodeMap[a];
