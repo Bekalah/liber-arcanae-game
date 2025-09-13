@@ -1,6 +1,6 @@
 {
-  "index": "index.v2.html",
-  "script": "js/helix-renderer.v2.mjs",
-  "palette": "data/palette.v2.json",
-  "readme": "README_RENDERER.v2.md"
+  "index": "index.html",
+  "script": "js/helix-renderer.mjs",
+  "palette": "data/palette.json",
+  "readme": "README_RENDERER.md"
 }
