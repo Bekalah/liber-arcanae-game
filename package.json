@@ -4,6 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/interface.test.js"
+    "test": "node tests/interface.test.js",
+    "optimize:images": "node scripts/optimize.mjs",
+    "find:dupes": "node scripts/dupes.mjs",
+    "validate:assets": "ajv validate -s schemas/asset.schema.json -d assets/ASSET_CATALOG.json --spec=draft2020"
+  },
+  "devDependencies": {
+    "ajv-cli": "*",
+    "imghash": "*",
+    "sharp": "*"
   }
 }

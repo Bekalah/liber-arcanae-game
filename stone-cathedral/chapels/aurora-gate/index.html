@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurora Gate · Fool / Node 00</title>
+
+  <!-- Strict CSP (meta form for static hosting).
+       MDN recommends header form; meta works for pure-static now, upgrade later if you add a server. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data: https:;
+                 style-src 'self' 'unsafe-inline'; script-src 'self';
+                 font-src 'self' https:; connect-src 'self';
+                 frame-ancestors 'none'; base-uri 'self'">
+  <!-- CSP background & tradeoffs: MDN CSP overview. --> <!--  [oai_citation:2‡MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP?utm_source=chatgpt.com) -->
+
+  <link rel="stylesheet" href="/core/atelier.css" />
+</head>
+<body>
+<main>
+  <article class="card" role="article" aria-labelledby="h1">
+    <h1 id="h1">Aurora Gate (Fool · Zero-Point)</h1>
+
+    <!-- Responsive image with AVIF/WEBP/JPEG, width descriptors + sizes -->
+    <picture>
+      <source type="image/avif"
+        srcset="/assets/img/carrington-gate-1280.avif 1280w,
+                /assets/img/carrington-gate-1920.avif 1920w"
+        sizes="(max-width: 640px) 92vw, 1200px">
+      <source type="image/webp"
+        srcset="/assets/img/carrington-gate-1280.webp 1280w,
+                /assets/img/carrington-gate-1920.webp 1920w"
+        sizes="(max-width: 640px) 92vw, 1200px">
+      <img src="/assets/img/carrington-gate-1280.jpg"
+           width="1200" height="675" loading="lazy" decoding="async"
+           alt="Obsidian arch under auroral sky; ND-safe, no strobe." />
+    </picture>
+
+    <p class="tags">
+      <span class="tag">#Fool</span>
+      <span class="tag">#AuroraGate</span>
+      <span class="tag">#Carrington-Atelier</span>
+    </p>
+
+    <nav class="buttons">
+      <a class="btn" href="/liber-arcanae/cards/major/fool/read.html">Enter Pathworking →</a>
+    </nav>
+  </article>
+</main>
+</body>
+</html>

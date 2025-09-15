@@ -1,0 +1,8 @@
+{
+  "resourceSizes": [
+    { "resourceType": "image", "budget": 300 }
+  ],
+  "resourceCounts": [
+    { "resourceType": "third-party", "budget": 0 }
+  ]
+}
