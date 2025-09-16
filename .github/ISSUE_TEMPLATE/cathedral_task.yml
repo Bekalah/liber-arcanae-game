@@ -1,0 +1,43 @@
+name: Cathedral Task (Schema-Driven, ND-safe)
+description: Ask Code Bot to add/extend without flattening the living system.
+labels: ["cathedral", "schema", "nd-safe"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Read first:** core/CODEBOT_BRIEF.md. No autoplay. No strobe. No flattening.
+  - type: input
+    id: task
+    attributes: {label: Task Title, placeholder: "Add Node 37 atelier room"}
+    validations: {required: true}
+  - type: textarea
+    id: intent
+    attributes:
+      label: Intent (Lore? Game? Research?)
+      description: Describe which layers apply — lore/game/research/effects/interface/node.
+      placeholder: "Create Atelier for Ouspensky; cite sources; link to Tesseract rooms[]."
+    validations: {required: true}
+  - type: textarea
+    id: data_refs
+    attributes:
+      label: Data References
+      description: Point to the JSON that must be read (no hardcoding).
+      placeholder: "/data/nodes.json#id=sephirah_tiphereth, /tesseract/data/manifest.json#rooms[ouspensky]"
+  - type: textarea
+    id: safety
+    attributes:
+      label: ND/PTSD Safety
+      placeholder: "No autoplay; motion: reduced; audio ramp 3s; transcript provided."
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - New files only; backup before overwrite.
+        - Adds CSL citations to docs/assets/bib/citations.json.
+        - Passes docs/tools/validator.html with 0 ERR.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / Sources
+      placeholder: "CSL IDs, public-domain plates, lineage notes."
