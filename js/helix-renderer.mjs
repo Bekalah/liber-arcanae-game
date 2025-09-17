@@ -8,6 +8,7 @@
     2) Tree-of-Life scaffold
     3) Fibonacci curve
     4) Double-helix lattice (two phase-shifted strands with calm crossbars)
+  Palette fallback draws a small inline notice so the user knows defaults applied.
 
   Rationale:
     - No motion or autoplay; everything renders once.
@@ -16,17 +17,26 @@
 */
 
 export function renderHelix(ctx, opts) {
-  const { width, height, palette, NUM } = opts;
+  if (!ctx) return;
+  const { width, height, palette, NUM, paletteLoaded } = opts;
+  const colors = Array.isArray(palette.layers) ? palette.layers.slice() : [];
+  while (colors.length < 4) {
+    colors.push(palette.ink || "#e8e8f0");
+  }
   ctx.clearRect(0, 0, width, height);
   // ND-safe: fill background first to avoid flashes
   ctx.fillStyle = palette.bg;
   ctx.fillRect(0, 0, width, height);
 
   // Layer order preserves depth: base geometry first, lattice last
-  drawVesica(ctx, width, height, palette.layers[0], NUM);
-  drawTreeOfLife(ctx, width, height, palette.layers[1], NUM);
-  drawFibonacciCurve(ctx, width, height, palette.layers[2], NUM);
-  drawHelixLattice(ctx, width, height, palette.layers[3], NUM);
+  drawVesica(ctx, width, height, colors[0], NUM);
+  drawTreeOfLife(ctx, width, height, colors[1], NUM);
+  drawFibonacciCurve(ctx, width, height, colors[2], NUM);
+  drawHelixLattice(ctx, width, height, colors[3], NUM);
+
+  if (!paletteLoaded) {
+    drawPaletteFallbackNotice(ctx, width, height, palette.ink);
+  }
 }
 
 // Layer 1: Vesica field using a 3x3 grid
@@ -136,17 +146,21 @@ function drawFibonacciCurve(ctx, w, h, color, NUM) {
 
 // Layer 4: Static double-helix lattice
 function drawHelixLattice(ctx, w, h, color, NUM) {
-  const steps = NUM.ONEFORTYFOUR; // 144 vertical steps
+  const steps = NUM.ONEFORTYFOUR; // 144 vertical steps honouring completion cycles
   const amp = h / NUM.NINE;
   const mid = h / 2;
   ctx.strokeStyle = color;
   ctx.lineWidth = 1; // ND-safe: fine lines keep lattice subtle
 
+  const waveFactor = NUM.TWENTYTWO / NUM.SEVEN; // 22/7 approximates pi for gentle rhythm
+  const phaseDivider = NUM.ELEVEN / NUM.SEVEN; // balances helix pitch with 11:7 proportion
+
   // strand A
   ctx.beginPath();
   for (let i = 0; i <= steps; i++) {
     const x = (i / steps) * w;
-    const y = mid + amp * Math.sin(i / NUM.ELEVEN);
+    const angle = (i / steps) * Math.PI * waveFactor;
+    const y = mid + amp * Math.sin(angle / phaseDivider);
     if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
   }
   ctx.stroke();
@@ -155,20 +169,34 @@ function drawHelixLattice(ctx, w, h, color, NUM) {
   ctx.beginPath();
   for (let i = 0; i <= steps; i++) {
     const x = (i / steps) * w;
-    const y = mid + amp * Math.sin(i / NUM.ELEVEN + Math.PI);
+    const angle = (i / steps) * Math.PI * waveFactor;
+    const y = mid + amp * Math.sin(angle / phaseDivider + Math.PI);
     if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
   }
   ctx.stroke();
 
-  // crossbars every 16 steps (approx 144/9)
-  const barStep = Math.floor(steps / NUM.NINE); // ND-safe: static crossbars provide calm symmetry
-  for (let i = 0; i <= steps; i += barStep) {
-    const x = (i / steps) * w;
-    const y1 = mid + amp * Math.sin(i / NUM.ELEVEN);
-    const y2 = mid + amp * Math.sin(i / NUM.ELEVEN + Math.PI);
+  // crossbars: exactly 22 ensures resonance with path count
+  const crossbars = NUM.TWENTYTWO;
+  for (let j = 0; j < crossbars; j++) {
+    const t = crossbars > 1 ? j / (crossbars - 1) : 0;
+    const x = t * w;
+    const angle = t * Math.PI * waveFactor;
+    const y1 = mid + amp * Math.sin(angle / phaseDivider);
+    const y2 = mid + amp * Math.sin(angle / phaseDivider + Math.PI);
     ctx.beginPath();
     ctx.moveTo(x, y1);
     ctx.lineTo(x, y2);
     ctx.stroke();
   }
+}
+
+function drawPaletteFallbackNotice(ctx, w, h, inkColor) {
+  ctx.save();
+  ctx.fillStyle = inkColor || "#e8e8f0";
+  ctx.globalAlpha = 0.66; // ND-safe: soft reminder, no harsh contrast
+  ctx.font = "14px system-ui, -apple-system, 'Segoe UI', sans-serif";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "top";
+  ctx.fillText("Palette defaults active (data file not found).", w * 0.05, h * 0.05);
+  ctx.restore();
 }
