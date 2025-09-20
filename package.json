@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/verify-absent.mjs",
+    "build": "vite build",
     "test": "node tests/interface.test.js",
     "optimize:images": "node scripts/optimize.mjs",
     "find:dupes": "node scripts/dupes.mjs",
@@ -12,6 +14,7 @@
   "devDependencies": {
     "ajv-cli": "*",
     "imghash": "*",
-    "sharp": "*"
+    "sharp": "*",
+    "vite": "^5.0.0"
   }
 }
