@@ -1,4 +1,4 @@
-*.png  filter=lfs diff=lfs merge=lfs -text
+*.png -filter -diff -merge
 *.tif  filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
 *.exr  filter=lfs diff=lfs merge=lfs -text

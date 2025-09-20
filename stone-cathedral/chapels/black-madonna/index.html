@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Black Madonna Chapel</title>
+  <link rel="stylesheet" href="/core/atelier.css">
+  <style>
+    /* ND-safe fallback: calm palette, no motion */
+    body { margin:0; background:#0b0c10; color:#e6e6e6; font:16px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif; }
+    main { max-width:1200px; margin:0 auto; padding:24px 16px 48px; }
+    header { margin-bottom:24px; }
+    h1 { font-size:28px; margin:0 0 8px; }
+    p { margin:0 0 12px; color:#b2b2c8; }
+    #opus { display:block; width:100%; max-width:1200px; margin:0 auto 16px; border:1px solid #1d1d2a; }
+    #hero-art { min-height:40px; display:flex; justify-content:center; }
+    #hero-art img { max-width:100%; height:auto; box-shadow:0 0 0 1px #1d1d2a; }
+    .note { font-size:14px; color:#8d8dab; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Black Madonna Chapel</h1>
+      <p>Static altar with WEBP manifest. Canvas paints first light so visitors see geometry even if the master asset is gated.</p>
+    </header>
+    <canvas id="opus" width="1200" height="675" aria-label="Opalescent octagram field"></canvas>
+    <div id="hero-art" aria-live="polite"></div>
+    <p class="note">Offline first. If the WEBP manifest is missing, the octagram remains as a calm placeholder.</p>
+  </main>
+  <script type="module">
+    import { paintOctagram } from "/assets/js/first-paint-octagram.js";
+    import { mountArt } from "/assets/js/art-loader.js";
+    paintOctagram();
+    mountArt();
+  </script>
+</body>
+</html>

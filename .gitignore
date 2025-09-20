@@ -1,4 +1,7 @@
+# Local caches and OS cruft
 .DS_Store
 Thumbs.db
 __pycache__/
 *.pyc
+node_modules/
+img/black-madonna.png
