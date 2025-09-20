@@ -2,8 +2,10 @@
 # ✦ CodeBot Guardrails — Cathedral-safe defaults (ND-safe, no flatten)
 set -euo pipefail
 OVERWRITE="${OVERWRITE:-0}"
-wf(){ [[ -e "$1" && "$OVERWRITE" != "1" ]] && { echo "skip (exists): $1"; return; }
+# wf writes stdin to the file path given by $1, creating parent directories as needed; if the target exists and the OVERWRITE environment variable is not "1" it prints "skip (exists): <path>" and does nothing, otherwise it writes stdin to the file and prints "wrote: <path>".
+      wf(){ [[ -e "$1" && "$OVERWRITE" != "1" ]] && { echo "skip (exists): $1"; return; }
       mkdir -p "$(dirname "$1")"; cat >"$1"; echo "wrote: $1"; }
+# ap appends a line to a file if that exact line is not already present, creating parent directories as needed and printing a message when it appends.
 ap(){ local f="$1" l="$2"; mkdir -p "$(dirname "$f")"; grep -Fqx "$l" "$f" 2>/dev/null || { echo "$l" >> "$f"; echo "appended: $l -> $f"; }; }
 
 # 0) Folders
