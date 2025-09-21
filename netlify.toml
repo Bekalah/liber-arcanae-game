@@ -1,2 +1,0 @@
-[build.environment]
-GIT_LFS_SKIP_SMUDGE = "1"
