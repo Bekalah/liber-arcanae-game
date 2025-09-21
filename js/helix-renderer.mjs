@@ -1,19 +1,18 @@
 // Per Texturas Numerorum, Spira Loquitur.  //
-/*
-  helix-renderer.mjs
-  ND-safe static renderer for layered sacred geometry.
-
-  Layers (drawn in order):
-    1) Vesica field built on a 3x3 grid
-    2) Tree-of-Life scaffold (10 sephirot, 22 connective paths)
-    3) Fibonacci curve (logarithmic polyline with 33 samples)
-    4) Double-helix lattice (two phase-shifted strands with calm crossbars)
-
-  Rationale:
-    - No motion or autoplay; everything renders once for sensory steadiness.
-    - Soft contrast palette keeps focus gentle while maintaining readability.
-    - Pure functions expose numerology constants (3, 7, 9, 11, 22, 33, 99, 144).
-*/
+/**
+ * Render the full static helix composition onto a 2D canvas.
+ *
+ * Draws four layered components in a fixed order (vesica field, Tree of Life scaffold,
+ * Fibonacci curve, double-helix lattice) and fills the ND-safe background first.
+ *
+ * @param {CanvasRenderingContext2D} ctx - Canvas 2D rendering context; function returns immediately if falsy.
+ * @param {Object} opts - Rendering options.
+ * @param {number} opts.width - Canvas width in pixels.
+ * @param {number} opts.height - Canvas height in pixels.
+ * @param {Object} opts.palette - Color palette with optional `bg`, `ink`, and `layers` array.
+ * @param {Object} opts.NUM - Numerology constants used by the layers (expects keys like THREE, NINE, SEVEN, TWENTYTWO, THIRTYTHREE, NINETYNINE, ONEFORTYFOUR, etc.).
+ * @param {boolean} opts.paletteLoaded - If false, a small fallback notice is rendered.
+ */
 
 export function renderHelix(ctx, opts) {
   if (!ctx) return;
@@ -41,7 +40,16 @@ export function renderHelix(ctx, opts) {
   }
 }
 
-// Layer 1: Vesica field using a 3x3 grid anchored to NUM.THREE and NUM.NINE
+/**
+ * Draws a 3×3 vesica field: pairs of overlapping circles placed in each grid cell.
+ *
+ * Two circles are drawn per cell (one shifted left, one right) using a radius computed as min(w, h) / NUM.NINE and a horizontal pair offset of radius / 2. The function sets ctx.strokeStyle to the provided color and uses a fixed line width of 2.
+ *
+ * @param {number} w - Canvas width in pixels.
+ * @param {number} h - Canvas height in pixels.
+ * @param {string|CanvasGradient|CanvasPattern} color - Stroke style used for the circle outlines.
+ * @param {Object} NUM - Numeric constants object; must include NUM.THREE (grid size) and NUM.NINE (radius divisor).
+ */
 function drawVesica(ctx, w, h, color, NUM) {
   const cols = NUM.THREE;
   const rows = NUM.THREE;
@@ -62,7 +70,19 @@ function drawVesica(ctx, w, h, color, NUM) {
   }
 }
 
-// Layer 2: Tree-of-Life scaffold with 10 nodes and 22 paths respecting NUM.TWENTYTWO
+/**
+ * Render a Tree-of-Life scaffold: 10 nodes connected by 22 straight paths.
+ *
+ * Draws a fixed layout of 10 nodes and their interconnecting paths onto the provided canvas context.
+ * Line thickness and node radius scale with the canvas size using values from the `NUM` constants.
+ * If the declared path count doesn't match `NUM.TWENTYTWO`, a console warning is emitted.
+ * Any path that references a missing node id is skipped silently.
+ *
+ * @param {number} w - Canvas width in pixels.
+ * @param {number} h - Canvas height in pixels.
+ * @param {string} color - Stroke/fill color used for paths and nodes.
+ * @param {Object} NUM - Numerology constants object (expects at least ONEFORTYFOUR, TWENTYTWO, THREE, NINE).
+ */
 function drawTreeOfLife(ctx, w, h, color, NUM) {
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
@@ -129,7 +149,11 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
   }
 }
 
-// Layer 3: Fibonacci curve using 33 segments guided by NUM.THIRTYTHREE
+/**
+ * Draws a Fibonacci-inspired spiral polyline (33 segments) onto the given canvas context.
+ *
+ * The curve is centered near the upper-right quadrant (x ≈ 75% of width, y ≈ 30% of height), scales with canvas size via NUM.NINETYNINE, and advances radially using powers of the golden ratio. Stroke color is taken from `color` and line width is fixed at 2. This function draws directly to the provided 2D rendering context and returns nothing.
+ */
 function drawFibonacciCurve(ctx, w, h, color, NUM) {
   const phi = (1 + Math.sqrt(5)) / 2;
   const center = { x: w * 0.75, y: h * 0.3 };
@@ -151,7 +175,20 @@ function drawFibonacciCurve(ctx, w, h, color, NUM) {
   ctx.stroke();
 }
 
-// Layer 4: Static double-helix lattice anchored to NUM.ONEFORTYFOUR steps
+/**
+ * Draws a static double-helix lattice with crossbars across the canvas.
+ *
+ * Renders two sine-based helix strands (phase-shifted by π) and a series of vertical
+ * crossbars connecting the strands. Uses NUM constants to determine step/count,
+ * amplitude, midline, line width and rhythmic factors (e.g., NUM.ONEFORTYFOUR for
+ * vertical resolution and NUM.TWENTYTWO for crossbar count). The function strokes
+ * directly to the provided 2D rendering context and does not return a value.
+ *
+ * @param {number} w - Canvas width in pixels.
+ * @param {number} h - Canvas height in pixels.
+ * @param {string} color - Stroke color used for strands and crossbars.
+ * @param {object} NUM - Numerology constants object (expects properties like ONEFORTYFOUR, NINE, TWENTYTWO, SEVEN, ELEVEN).
+ */
 function drawHelixLattice(ctx, w, h, color, NUM) {
   const steps = NUM.ONEFORTYFOUR; // 144 vertical steps honour completion cycles
   const amplitude = h / NUM.NINE;
@@ -180,6 +217,21 @@ function drawHelixLattice(ctx, w, h, color, NUM) {
   }
 }
 
+/**
+ * Draws a single sine-wave helix strand across the canvas width and strokes it.
+ *
+ * Renders a smooth polyline computed from a sinusoid and immediately strokes the path
+ * on the provided 2D canvas context.
+ *
+ * @param {CanvasRenderingContext2D} ctx - Canvas 2D context (not documented as a service).
+ * @param {number} w - Horizontal span (canvas width) over which the strand is drawn.
+ * @param {number} steps - Number of discrete segments/samples along the strand (higher => smoother).
+ * @param {number} midline - Vertical centerline (y coordinate) around which the strand oscillates.
+ * @param {number} amplitude - Peak vertical displacement from the midline.
+ * @param {number} waveFactor - Multiplier controlling total angular span (affects how many wave cycles appear across the width).
+ * @param {number} phaseDivider - Divisor applied to the angle before the phase shift (tunes the wavelength).
+ * @param {number} phase - Phase offset in radians applied to the sine function.
+ */
 function drawHelixStrand(ctx, w, steps, midline, amplitude, waveFactor, phaseDivider, phase) {
   ctx.beginPath();
   for (let i = 0; i <= steps; i++) {
@@ -195,6 +247,16 @@ function drawHelixStrand(ctx, w, steps, midline, amplitude, waveFactor, phaseDiv
   ctx.stroke();
 }
 
+/**
+ * Draws a low-contrast fallback notice when a palette data file isn't available.
+ *
+ * Renders a short, semi-transparent single-line message in the canvas top-left
+ * corner so the notice is visible but unobtrusive.
+ *
+ * @param {number} w - Canvas width (used to position the text at 5% from left).
+ * @param {number} h - Canvas height (used to position the text at 5% from top).
+ * @param {string} [inkColor="#e8e8f0"] - CSS color used for the text; defaults to a light ink.
+ */
 function drawPaletteFallbackNotice(ctx, w, h, inkColor) {
   ctx.save();
   ctx.fillStyle = inkColor || "#e8e8f0";
