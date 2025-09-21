@@ -16,21 +16,27 @@
 */
 
 export function renderHelix(ctx, opts) {
+  if (!ctx) return; // Defensive guard for legacy environments
   const { width, height, palette, NUM } = opts;
   ctx.clearRect(0, 0, width, height);
   // ND-safe: fill background first to avoid flashes
   ctx.fillStyle = palette.bg;
   ctx.fillRect(0, 0, width, height);
 
+  const layers = Array.isArray(palette.layers) ? palette.layers : [];
+  const fallbackColor = palette.ink;
+  const getColor = index => (typeof layers[index] === "string" ? layers[index] : fallbackColor);
+
   // Layer order preserves depth: base geometry first, lattice last
-  drawVesica(ctx, width, height, palette.layers[0], NUM);
-  drawTreeOfLife(ctx, width, height, palette.layers[1], NUM);
-  drawFibonacciCurve(ctx, width, height, palette.layers[2], NUM);
-  drawHelixLattice(ctx, width, height, palette.layers[3], NUM);
+  drawVesica(ctx, width, height, getColor(0), NUM);
+  drawTreeOfLife(ctx, width, height, getColor(1), NUM);
+  drawFibonacciCurve(ctx, width, height, getColor(2), NUM);
+  drawHelixLattice(ctx, width, height, getColor(3), NUM);
 }
 
 // Layer 1: Vesica field using a 3x3 grid
 function drawVesica(ctx, w, h, color, NUM) {
+  ctx.save();
   const cols = NUM.THREE;
   const rows = NUM.THREE;
   const r = Math.min(w, h) / NUM.NINE; // ND-safe: gentle radius balances the grid
@@ -48,13 +54,16 @@ function drawVesica(ctx, w, h, color, NUM) {
       ctx.stroke();
     }
   }
+  ctx.restore();
 }
 
 // Layer 2: Tree-of-Life scaffold with 10 nodes and 22 paths
 function drawTreeOfLife(ctx, w, h, color, NUM) {
+  ctx.save();
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
   ctx.lineWidth = 1; // ND-safe: thin lines keep focus soft
+  ctx.lineJoin = "round";
 
   const nodes = [
     { id: "C144N-001", x: w / 2, y: h * 0.05 },
@@ -114,10 +123,12 @@ function drawTreeOfLife(ctx, w, h, color, NUM) {
     ctx.arc(x, y, r, 0, Math.PI * 2);
     ctx.fill();
   }
+  ctx.restore();
 }
 
 // Layer 3: Fibonacci curve using 33 segments
 function drawFibonacciCurve(ctx, w, h, color, NUM) {
+  ctx.save();
   const phi = (1 + Math.sqrt(5)) / 2;
   const center = { x: w * 0.75, y: h * 0.3 };
   const scale = Math.min(w, h) / NUM.NINETYNINE;
@@ -132,15 +143,18 @@ function drawFibonacciCurve(ctx, w, h, color, NUM) {
     if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
   }
   ctx.stroke();
+  ctx.restore();
 }
 
 // Layer 4: Static double-helix lattice
 function drawHelixLattice(ctx, w, h, color, NUM) {
+  ctx.save();
   const steps = NUM.ONEFORTYFOUR; // 144 vertical steps
   const amp = h / NUM.NINE;
   const mid = h / 2;
   ctx.strokeStyle = color;
   ctx.lineWidth = 1; // ND-safe: fine lines keep lattice subtle
+  ctx.lineCap = "round";
 
   // strand A
   ctx.beginPath();
@@ -171,4 +185,5 @@ function drawHelixLattice(ctx, w, h, color, NUM) {
     ctx.lineTo(x, y2);
     ctx.stroke();
   }
+  ctx.restore();
 }
