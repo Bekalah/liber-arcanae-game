@@ -12,13 +12,13 @@ Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open [index.h
 
 Canonical IDs tag the scaffold: nodes are `C144N-001` through `C144N-010` and gates use `G-099-01` to `G-099-22`.
 
-Each layer uses the next color from [`data/palette.json`](./data/palette.json). If the palette file is missing, a safe fallback loads and a small notice appears.
+Each layer uses the next color from [`data/palette.json`](./data/palette.json). The loader normalizes palettes that provide fewer than four layer colors and updates the page chrome so background and text remain aligned. If the palette file is missing, a safe fallback loads and a small notice appears.
 
 ## Numerology
 Geometry routines reference sacred numbers 3, 7, 9, 11, 22, 33, 99, and 144 to keep proportions meaningful while staying static.
 
 ## Local Use
-Double-click [index.html](./index.html) in any modern browser. The 1440×900 canvas renders immediately with no network calls.
+Double-click [index.html](./index.html) in any modern browser. The 1440×900 canvas renders immediately with no network calls, and if canvas is unavailable (very old browsers) a gentle inline notice explains the fallback.
 The renderer depends on [`js/helix-renderer.mjs`](./js/helix-renderer.mjs) and optional [`data/palette.json`](./data/palette.json).
 Everything runs offline.
 

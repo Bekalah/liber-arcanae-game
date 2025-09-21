@@ -36,6 +36,7 @@
     const ctx = canvas.getContext("2d");
 
     async function loadJSON(path) {
+      // Offline friendly: try local fetch, fall back silently if blocked by file:// restrictions
       try {
         const res = await fetch(path, { cache: "no-store" });
         if (!res.ok) throw new Error(String(res.status));
@@ -43,6 +44,37 @@
       } catch (err) {
         return null;
       }
+    }
+
+    function normalizePalette(candidate, fallback) {
+      // Ensures four layer colors even if palette.json is trimmed or missing entries
+      const safe = {
+        bg: fallback.bg,
+        ink: fallback.ink,
+        layers: []
+      };
+      if (candidate) {
+        if (typeof candidate.bg === "string") safe.bg = candidate.bg;
+        if (typeof candidate.ink === "string") safe.ink = candidate.ink;
+      }
+      const layers = candidate && Array.isArray(candidate.layers) ? candidate.layers : [];
+      const fallbackLayers = fallback.layers;
+      const required = 4;
+      for (let i = 0; i < required; i++) {
+        const fallbackIndex = i % fallbackLayers.length;
+        const color = typeof layers[i] === "string" ? layers[i] : fallbackLayers[fallbackIndex];
+        safe.layers.push(color);
+      }
+      return safe;
+    }
+
+    function applyPaletteVariables(palette) {
+      // Aligns document chrome with the active palette for consistent ND-safe contrast
+      const rootStyle = document.documentElement.style;
+      rootStyle.setProperty("--bg", palette.bg);
+      rootStyle.setProperty("--ink", palette.ink);
+      document.body.style.background = palette.bg;
+      document.body.style.color = palette.ink;
     }
 
     const defaults = {
@@ -53,15 +85,28 @@
       }
     };
 
-    const palette = await loadJSON("./data/palette.json");
-    const active = palette || defaults.palette;
-    elStatus.textContent = palette ? "Palette loaded." : "Palette missing; using safe fallback.";
+    const paletteData = await loadJSON("./data/palette.json");
+    const paletteForRender = normalizePalette(paletteData, defaults.palette);
+    applyPaletteVariables(paletteForRender);
+
+    const paletteStatus = paletteData ? "Palette loaded." : "Palette missing; using safe fallback.";
+
+    if (!ctx) {
+      elStatus.textContent = paletteStatus + " Canvas rendering unavailable.";
+      // Inline notice keeps the page informative even on legacy browsers
+      const warning = document.createElement("p");
+      warning.className = "note";
+      warning.textContent = "Canvas 2D context is unavailable; layered geometry cannot render, but the palette fallback applied.";
+      canvas.replaceWith(warning);
+      return;
+    }
 
     // Numerology constants used by geometry routines
     const NUM = { THREE:3, SEVEN:7, NINE:9, ELEVEN:11, TWENTYTWO:22, THIRTYTHREE:33, NINETYNINE:99, ONEFORTYFOUR:144 };
 
     // ND-safe rationale: no motion, high readability, soft colors, layered order
-    renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:active, NUM });
+    renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:paletteForRender, NUM });
+    elStatus.textContent = paletteStatus + " Geometry rendered.";
   </script>
 </body>
 </html>
