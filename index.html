@@ -20,24 +20,32 @@
 </head>
 <body>
   <header>
-    <div><strong>Cosmic Helix Renderer</strong> - layered sacred geometry (offline, ND-safe)</div>
-    <div class="status" id="status">Loading palette...</div>
+    <div><strong>Cosmic Helix Renderer</strong> &mdash; layered sacred geometry (offline, ND-safe)</div>
+    <div class="status" id="status">Loading palette&hellip;</div>
   </header>
 
   <!-- 1440x900 stage mirrors lattice 144 and soft 9-fold verticals; fixed size prevents sudden resize flashes -->
   <canvas id="stage" width="1440" height="900" aria-label="Layered sacred geometry canvas"></canvas>
-  <p class="note">This static renderer encodes Vesica, Tree-of-Life, Fibonacci, and a static double-helix lattice. No animation, no autoplay, no external libs. Open this file directly.</p>
+  <p class="note" id="info-note">This static renderer encodes Vesica, Tree-of-Life, Fibonacci, and a static double-helix lattice. No animation, no autoplay, no external libs. Open this file directly.</p>
 
   <script type="module">
     import { renderHelix } from "./js/helix-renderer.mjs";
 
     const elStatus = document.getElementById("status");
+    const infoNote = document.getElementById("info-note");
     const canvas = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-    if (!ctx) {
-      // ND-safe: acknowledge missing Canvas support instead of failing silently
-      elStatus.textContent = "Canvas context unavailable; static fallback only.";
-      canvas.insertAdjacentHTML("afterend", "<p class=\"note\">Canvas API unavailable in this browser.</p>");
+    const fallbackId = "palette-warning";
+
+    function reportFallback(message) {
+      elStatus.textContent = message;
+      if (!infoNote) return;
+      if (document.getElementById(fallbackId)) return;
+      const warning = document.createElement("p");
+      warning.id = fallbackId;
+      warning.className = "note";
+      warning.textContent = message;
+      infoNote.insertAdjacentElement("afterend", warning);
     }
 
     async function loadJSON(path) {
@@ -58,16 +66,23 @@
       }
     };
 
-    if (ctx) {
+    if (!ctx) {
+      // ND-safe: acknowledge missing Canvas support instead of failing silently
+      reportFallback("Canvas context unavailable; static fallback only.");
+    } else {
       const palette = await loadJSON("./data/palette.json");
       const paletteLoaded = Boolean(palette);
-      const active = palette || defaults.palette;
-      elStatus.textContent = paletteLoaded ? "Palette loaded." : "Palette missing; using safe fallback.";
+      const active = paletteLoaded ? palette : defaults.palette;
+      if (paletteLoaded) {
+        elStatus.textContent = "Palette loaded.";
+      } else {
+        reportFallback("Palette missing; using safe fallback.");
+      }
 
       // Numerology constants used by geometry routines
       const NUM = { THREE:3, SEVEN:7, NINE:9, ELEVEN:11, TWENTYTWO:22, THIRTYTHREE:33, NINETYNINE:99, ONEFORTYFOUR:144 };
 
-      // ND-safe rationale: no motion, high readability, soft colors, layered order
+      // ND-safe rationale: no motion, high readability, soft colors, layered order preserved
       renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:active, NUM, paletteLoaded });
     }
   </script>
