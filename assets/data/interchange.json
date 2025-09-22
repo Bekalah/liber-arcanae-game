@@ -1,0 +1,487 @@
+{
+  "version": "1.0.0",
+  "scope": "major_arcana_08_21",
+  "orders": [
+    {
+      "id": "order_sulphur",
+      "name": "Order of Sulphur",
+      "element": "Fire",
+      "keywords": [
+        "courage",
+        "transmutation",
+        "ignition"
+      ],
+      "notes": "Fire-facing Witch Eye discipline focused on will and catalytic healing."
+    },
+    {
+      "id": "order_mercury",
+      "name": "Order of Mercury",
+      "element": "Mercury (water-air)",
+      "keywords": [
+        "wisdom",
+        "listening",
+        "adaptive flow"
+      ],
+      "notes": "Mercurial Witch Eye study of reflective flow, dreamwork, and harmonic balance."
+    },
+    {
+      "id": "order_salt",
+      "name": "Order of Salt",
+      "element": "Earth",
+      "keywords": [
+        "stability",
+        "cycles",
+        "equilibrium"
+      ],
+      "notes": "Salt order grounds the Witch Eye through cycles, geomancy, and embodied justice."
+    },
+    {
+      "id": "order_ash",
+      "name": "Order of Ash",
+      "element": "Air",
+      "keywords": [
+        "shadow",
+        "liminality",
+        "liberation"
+      ],
+      "notes": "Ash order metabolizes shadow, oaths, and paradox without motion or flash."
+    },
+    {
+      "id": "order_inner",
+      "name": "Inner Order",
+      "element": "Aether",
+      "keywords": [
+        "integration",
+        "world-bridge",
+        "continuum"
+      ],
+      "notes": "Inner Order keeps the spine of Liber Arcanae — wholeness and cosmogenesis."
+    }
+  ],
+  "cards": [
+    {
+      "id": "MA08",
+      "name": "Strength",
+      "slug": "strength",
+      "arcana": "major",
+      "order_id": "order_sulphur",
+      "order_name": "Order of Sulphur",
+      "order_element": "Fire",
+      "non_living_lineages": [
+        {
+          "id": "strength-lion-s-crown",
+          "title": "Lion's Crown",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Flame",
+            "Taming the lion"
+          ],
+          "notes": "Rage / Compassionate strength"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe golden-red halo, 417 Hz tone",
+        "music": "Solfeggio 417 Hz",
+        "learning": "Rage / Compassionate strength",
+        "game": "Courage trials in circuitum99",
+        "artifact": "Lion's Crown"
+      },
+      "frequency_hz": 417,
+      "figure": "Morticia Moonbeamer"
+    },
+    {
+      "id": "MA09",
+      "name": "The Hermit",
+      "slug": "the-hermit",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "the-hermit-lantern-of-gnosis",
+          "title": "Lantern of Gnosis",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Cross",
+            "Light in the dark"
+          ],
+          "notes": "Isolation / Wisdom in solitude"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe lantern glow, 741 Hz tone",
+        "music": "Solfeggio 741 Hz",
+        "learning": "Isolation / Wisdom in solitude",
+        "game": "Hermit cave in Mystery House",
+        "artifact": "Lantern of Gnosis"
+      },
+      "frequency_hz": 741,
+      "figure": "Amiyara Skye"
+    },
+    {
+      "id": "MA10",
+      "name": "Wheel of Fortune",
+      "slug": "wheel-of-fortune",
+      "arcana": "major",
+      "order_id": "order_salt",
+      "order_name": "Order of Salt",
+      "order_element": "Earth",
+      "non_living_lineages": [
+        {
+          "id": "wheel-of-fortune-turning-wheel",
+          "title": "Turning Wheel",
+          "kind": "artifact",
+          "keywords": [
+            "Circle",
+            "Ever-turning wheel"
+          ],
+          "notes": "Fatalism / Embracing cycles"
+        }
+      ],
+      "appPulls": {
+        "visual": "Rotating mandala overlay, 528 Hz tone",
+        "music": "Solfeggio 528 Hz",
+        "learning": "Fatalism / Embracing cycles",
+        "game": "Fortuna chamber in Stone-Grimoire",
+        "artifact": "Turning Wheel"
+      },
+      "frequency_hz": 528,
+      "figure": "Cael Umbra"
+    },
+    {
+      "id": "MA11",
+      "name": "Justice",
+      "slug": "justice",
+      "arcana": "major",
+      "order_id": "order_salt",
+      "order_name": "Order of Salt",
+      "order_element": "Earth",
+      "non_living_lineages": [
+        {
+          "id": "justice-scales-of-truth",
+          "title": "Scales of Truth",
+          "kind": "artifact",
+          "keywords": [
+            "Cross",
+            "Balance of forces"
+          ],
+          "notes": "Judgment / Equanimity"
+        }
+      ],
+      "appPulls": {
+        "visual": "Balanced overlay, 741 Hz tone",
+        "music": "Solfeggio 741 Hz",
+        "learning": "Judgment / Equanimity",
+        "game": "Hall of Scales in Mystery House",
+        "artifact": "Scales of Truth"
+      },
+      "frequency_hz": 741,
+      "figure": "Elyria Nox"
+    },
+    {
+      "id": "MA12",
+      "name": "The Hanged Man",
+      "slug": "the-hanged-man",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "the-hanged-man-rope-of-reversal",
+          "title": "Rope of Reversal",
+          "kind": "artifact",
+          "keywords": [
+            "Cross inverted",
+            "Vision in stillness"
+          ],
+          "notes": "Victimhood / Surrender to transformation"
+        }
+      ],
+      "appPulls": {
+        "visual": "Inverted cross overlay, 963 Hz tone",
+        "music": "Solfeggio 963 Hz",
+        "learning": "Victimhood / Surrender to transformation",
+        "game": "Yggdrasil branch portal",
+        "artifact": "Rope of Reversal"
+      },
+      "frequency_hz": 963,
+      "figure": "Mirror Witch"
+    },
+    {
+      "id": "MA13",
+      "name": "Death",
+      "slug": "death",
+      "arcana": "major",
+      "order_id": "order_ash",
+      "order_name": "Order of Ash",
+      "order_element": "Air",
+      "non_living_lineages": [
+        {
+          "id": "death-scythe-of-transformation",
+          "title": "Scythe of Transformation",
+          "kind": "artifact",
+          "keywords": [
+            "Cross + Flame",
+            "Death is passage"
+          ],
+          "notes": "Fear of loss / Transmutation through grief"
+        }
+      ],
+      "appPulls": {
+        "visual": "Void halo overlay, ND-safe 963 Hz tone",
+        "music": "Solfeggio 963 Hz",
+        "learning": "Fear of loss / Transmutation through grief",
+        "game": "Ann Abyss grimoire portal",
+        "artifact": "Scythe of Transformation"
+      },
+      "frequency_hz": 963,
+      "figure": "Ann Abyss (Shadow)"
+    },
+    {
+      "id": "MA14",
+      "name": "Temperance",
+      "slug": "temperance",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "temperance-mixing-vessels",
+          "title": "Mixing Vessels",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Cross",
+            "Alchemy of opposites"
+          ],
+          "notes": "Excess / Harmonization"
+        }
+      ],
+      "appPulls": {
+        "visual": "Prism halo overlay, harmonic tones",
+        "music": "Solfeggio 528 Hz",
+        "learning": "Excess / Harmonization",
+        "game": "Alchemy lab portal",
+        "artifact": "Mixing Vessels"
+      },
+      "frequency_hz": 528,
+      "figure": "Lyra Vox"
+    },
+    {
+      "id": "MA15",
+      "name": "The Devil",
+      "slug": "the-devil",
+      "arcana": "major",
+      "order_id": "order_ash",
+      "order_name": "Order of Ash",
+      "order_element": "Air",
+      "non_living_lineages": [
+        {
+          "id": "the-devil-chains-of-paradox",
+          "title": "Chains of Paradox",
+          "kind": "artifact",
+          "keywords": [
+            "Cross + Flame inverted",
+            "Trickster's riddle"
+          ],
+          "notes": "Addiction / Shadow integration"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe paradox overlay, 285 Hz tone",
+        "music": "Solfeggio 285 Hz",
+        "learning": "Addiction / Shadow integration",
+        "game": "Zidaryen riddle grove",
+        "artifact": "Chains of Paradox"
+      },
+      "frequency_hz": 285,
+      "figure": "Scarlet Lady"
+    },
+    {
+      "id": "MA16",
+      "name": "The Tower",
+      "slug": "the-tower",
+      "arcana": "major",
+      "order_id": "order_sulphur",
+      "order_name": "Order of Sulphur",
+      "order_element": "Fire",
+      "non_living_lineages": [
+        {
+          "id": "the-tower-lightning-rod",
+          "title": "Lightning Rod",
+          "kind": "artifact",
+          "keywords": [
+            "Cross struck by flame",
+            "Tower falls"
+          ],
+          "notes": "Hubris / Cleansing destruction"
+        }
+      ],
+      "appPulls": {
+        "visual": "Lightning overlay, 417 Hz tone",
+        "music": "Solfeggio 417 Hz",
+        "learning": "Hubris / Cleansing destruction",
+        "game": "Tower collapse trial",
+        "artifact": "Lightning Rod"
+      },
+      "frequency_hz": 417,
+      "figure": "Fenrix Thorne"
+    },
+    {
+      "id": "MA17",
+      "name": "The Star",
+      "slug": "the-star",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "the-star-water-jar-of-wisdom",
+          "title": "Water Jar of Wisdom",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Crescent",
+            "Star of guidance"
+          ],
+          "notes": "Hopelessness / Sacred hope"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe star overlay, 852 Hz tone",
+        "music": "Solfeggio 852 Hz",
+        "learning": "Hopelessness / Sacred hope",
+        "game": "Star temple portal",
+        "artifact": "Water Jar of Wisdom"
+      },
+      "frequency_hz": 852,
+      "figure": "Sophia/Gnosis"
+    },
+    {
+      "id": "MA18",
+      "name": "The Moon",
+      "slug": "the-moon",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "the-moon-lunar-mirror",
+          "title": "Lunar Mirror",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Crescent",
+            "Lunar vision"
+          ],
+          "notes": "Delusion / Intuition"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe moon halo, 852 Hz tone",
+        "music": "Solfeggio 852 Hz",
+        "learning": "Delusion / Intuition",
+        "game": "Vespertine dream gate",
+        "artifact": "Lunar Mirror"
+      },
+      "frequency_hz": 852,
+      "figure": "Moonchild 2000"
+    },
+    {
+      "id": "MA19",
+      "name": "The Sun",
+      "slug": "the-sun",
+      "arcana": "major",
+      "order_id": "order_sulphur",
+      "order_name": "Order of Sulphur",
+      "order_element": "Fire",
+      "non_living_lineages": [
+        {
+          "id": "the-sun-solar-orb",
+          "title": "Solar Orb",
+          "kind": "artifact",
+          "keywords": [
+            "Circle + Flame",
+            "Inner sun"
+          ],
+          "notes": "Ego inflation / Solar vitality"
+        }
+      ],
+      "appPulls": {
+        "visual": "Solar overlay, 528 Hz tone",
+        "music": "Solfeggio 528 Hz",
+        "learning": "Ego inflation / Solar vitality",
+        "game": "Solar chamber in Stone-Grimoire",
+        "artifact": "Solar Orb"
+      },
+      "frequency_hz": 528,
+      "figure": "Rebecca Respawn (Solar Double)"
+    },
+    {
+      "id": "MA20",
+      "name": "Judgment",
+      "slug": "judgment",
+      "arcana": "major",
+      "order_id": "order_mercury",
+      "order_name": "Order of Mercury",
+      "order_element": "Mercury (water-air)",
+      "non_living_lineages": [
+        {
+          "id": "judgment-trumpet-of-awakening",
+          "title": "Trumpet of Awakening",
+          "kind": "artifact",
+          "keywords": [
+            "Cross + Flame",
+            "Call to awakening"
+          ],
+          "notes": "Denial / Revelation"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe trumpet overlay, 963 Hz tone",
+        "music": "Solfeggio 963 Hz",
+        "learning": "Denial / Revelation",
+        "game": "Judgment hall in circuitum99",
+        "artifact": "Trumpet of Awakening"
+      },
+      "frequency_hz": 963,
+      "figure": "Sekhara"
+    },
+    {
+      "id": "MA21",
+      "name": "The World",
+      "slug": "the-world",
+      "arcana": "major",
+      "order_id": "order_inner",
+      "order_name": "Inner Order",
+      "order_element": "Aether",
+      "non_living_lineages": [
+        {
+          "id": "the-world-ouroboros-ring",
+          "title": "Ouroboros Ring",
+          "kind": "artifact",
+          "keywords": [
+            "Circle complete",
+            "All is One"
+          ],
+          "notes": "Fragmentation / Integration"
+        }
+      ],
+      "appPulls": {
+        "visual": "ND-safe Ouroboros overlay, 963 Hz tone",
+        "music": "Solfeggio 963 Hz",
+        "learning": "Fragmentation / Integration",
+        "game": "World gate in circuitum99 + Codex 144:99",
+        "artifact": "Ouroboros Ring"
+      },
+      "frequency_hz": 963,
+      "figure": "LuxCrux Monad"
+    }
+  ],
+  "provenance": {
+    "source": "docs/cards_major_08-21.md",
+    "notes": "Interchange layer binding Witch Eye orders and non-living artifact lineages for majors VIII–XXI."
+  }
+}
