@@ -32,6 +32,11 @@ export function renderHelix(ctx, opts) {
   drawTreeOfLife(ctx, width, height, getColor(1), NUM);
   drawFibonacciCurve(ctx, width, height, getColor(2), NUM);
   drawHelixLattice(ctx, width, height, getColor(3), NUM);
+  // Layer order preserves depth: base geometry first, lattice last
+  drawVesica(ctx, width, height, palette.layers[0], NUM);
+  drawTreeOfLife(ctx, width, height, palette.layers[1], NUM);
+  drawFibonacciCurve(ctx, width, height, palette.layers[2], NUM);
+  drawHelixLattice(ctx, width, height, palette.layers[3], NUM);
 }
 
 // Layer 1: Vesica field using a 3x3 grid
