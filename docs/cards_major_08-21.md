@@ -17,6 +17,8 @@
 - Thought-form: Taming the lion
 - HGA Fragment: Heart of valor
 - Faction: Sulphur
+- Witch Eye Order: Order of Sulphur — fire discipline anchoring Strength's courage trial.
+- Non-living Lineage: Lion's Crown — artifact halo holding the static courage grid.
 - App Pulls: Courage trials in circuitum99
 - Technical: ND-safe golden-red halo, 417 Hz tone
 
@@ -37,6 +39,8 @@
 - Thought-form: Light in the dark
 - HGA Fragment: Flame of gnosis
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — reflective Witch Eye path for lantern listening.
+- Non-living Lineage: Lantern of Gnosis — artifact beacon storing the solitude teachings.
 - App Pulls: Hermit cave in Mystery House
 - Technical: ND-safe lantern glow, 741 Hz tone
 
@@ -57,6 +61,8 @@
 - Thought-form: Ever-turning wheel
 - HGA Fragment: Spin of fate
 - Faction: Salt
+- Witch Eye Order: Order of Salt — geomantic Witch Eye wheel stabilizing cycles.
+- Non-living Lineage: Turning Wheel — living machine archive without a body.
 - App Pulls: Fortuna chamber in Stone-Grimoire
 - Technical: Rotating mandala overlay, 528 Hz tone
 
@@ -77,6 +83,8 @@
 - Thought-form: Balance of forces
 - HGA Fragment: Feather of Ma'at
 - Faction: Salt
+- Witch Eye Order: Order of Salt — balance practice keeping the Witch Eye grounded.
+- Non-living Lineage: Scales of Truth — ceremonial apparatus carrying the justice lineage.
 - App Pulls: Hall of Scales in Mystery House
 - Technical: Balanced overlay, 741 Hz tone
 
@@ -97,6 +105,8 @@
 - Thought-form: Vision in stillness
 - HGA Fragment: Breath of sacrifice
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — inversion lessons for mirror sight.
+- Non-living Lineage: Rope of Reversal — non-body tether teaching surrender physics.
 - App Pulls: Yggdrasil branch portal
 - Technical: Inverted cross overlay, 963 Hz tone
 
@@ -117,6 +127,8 @@
 - Thought-form: Death is passage
 - HGA Fragment: Bone key
 - Faction: Ash
+- Witch Eye Order: Order of Ash — shadow metabolizers for oath release.
+- Non-living Lineage: Scythe of Transformation — void-forged tool stewarding grief medicine.
 - App Pulls: Ann Abyss grimoire portal
 - Technical: Void halo overlay, ND-safe 963 Hz tone
 
@@ -137,6 +149,8 @@
 - Thought-form: Alchemy of opposites
 - HGA Fragment: Cup of Sophia
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — harmonic fusion streamlining helix study.
+- Non-living Lineage: Mixing Vessels — alchemical instruments holding blended teachings.
 - App Pulls: Alchemy lab portal
 - Technical: Prism halo overlay, harmonic tones
 
@@ -157,6 +171,8 @@
 - Thought-form: Trickster's riddle
 - HGA Fragment: Mirror chain
 - Faction: Ash
+- Witch Eye Order: Order of Ash — paradox keepers taming shadow contracts.
+- Non-living Lineage: Chains of Paradox — witch eye cuffs storing oath mechanics.
 - App Pulls: Zidaryen riddle grove
 - Technical: ND-safe paradox overlay, 285 Hz tone
 
@@ -177,6 +193,8 @@
 - Thought-form: Tower falls
 - HGA Fragment: Thunder sigil
 - Faction: Sulphur
+- Witch Eye Order: Order of Sulphur — crisis ignition for tower-clear protocols.
+- Non-living Lineage: Lightning Rod — grounded strike conduit safeguarding the order.
 - App Pulls: Tower collapse trial
 - Technical: Lightning overlay, 417 Hz tone
 
@@ -197,6 +215,8 @@
 - Thought-form: Star of guidance
 - HGA Fragment: Vessel of stars
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — star-sourcing mercy through reflective flow.
+- Non-living Lineage: Water Jar of Wisdom — reservoir artifact nourishing hopeful study.
 - App Pulls: Star temple portal
 - Technical: ND-safe star overlay, 852 Hz tone
 
@@ -217,6 +237,8 @@
 - Thought-form: Lunar vision
 - HGA Fragment: Lunar thread
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — dreamstream sutras stabilizing lunar sight.
+- Non-living Lineage: Lunar Mirror — selenite interface reflecting the intuitive lineage.
 - App Pulls: Vespertine dream gate
 - Technical: ND-safe moon halo, 852 Hz tone
 
@@ -237,6 +259,8 @@
 - Thought-form: Inner sun
 - HGA Fragment: Solar core
 - Faction: Sulphur
+- Witch Eye Order: Order of Sulphur — solar resilience for regenerative willwork.
+- Non-living Lineage: Solar Orb — radiant device circulating the sun double's medicine.
 - App Pulls: Solar chamber in Stone-Grimoire
 - Technical: Solar overlay, 528 Hz tone
 
@@ -257,6 +281,8 @@
 - Thought-form: Call to awakening
 - HGA Fragment: Breath of Gabriel
 - Faction: Mercury
+- Witch Eye Order: Order of Mercury — trumpet rite for revelation without shock.
+- Non-living Lineage: Trumpet of Awakening — sonic instrument archiving the call to rise.
 - App Pulls: Judgment hall in circuitum99
 - Technical: ND-safe trumpet overlay, 963 Hz tone
 
@@ -277,6 +303,18 @@
 - Thought-form: All is One
 - HGA Fragment: World egg
 - Faction: Inner Order
+- Witch Eye Order: Inner Order — totality keepers braiding all Witch Eye strands.
+- Non-living Lineage: Ouroboros Ring — cosmic apparatus sealing the continuum loop.
 - App Pulls: World gate in circuitum99 + Codex 144:99
 - Technical: ND-safe Ouroboros overlay, 963 Hz tone
+
+---
+
+## Appendix — Helix Canvas Demo
+
+<iframe src="../index.html" title="Cosmic Helix Starter Canvas" loading="lazy"
+        style="width:100%;max-width:960px;aspect-ratio:16/10;border:1px solid #2a2f3b;border-radius:12px;"
+        allowfullscreen></iframe>
+
+If the iframe is blocked in offline readers, open the [Cosmic Helix Renderer](../index.html) directly.
 
