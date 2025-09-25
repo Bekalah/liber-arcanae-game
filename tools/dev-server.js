@@ -10,10 +10,17 @@ const root = path.resolve(__dirname, '..'); // parent directory
 const server = http.createServer(async (req, res) => {
   const reqPath = path.normalize(decodeURI(req.url.split('?')[0]));
   let filePath = path.join(root, reqPath);
+  // Validate that the file path is inside the root directory
+  const absPath = path.resolve(filePath);
+  if (!absPath.startsWith(root + path.sep)) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
   try {
-    const info = await stat(filePath);
-    if (info.isDirectory()) filePath = path.join(filePath, 'index.html');
-    const data = await readFile(filePath);
+    const info = await stat(absPath);
+    if (info.isDirectory()) absPath = path.join(absPath, 'index.html');
+    const data = await readFile(absPath);
     res.writeHead(200);
     res.end(data);
   } catch (err) {
