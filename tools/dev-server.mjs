@@ -24,7 +24,12 @@ const types = {
 
 const server = http.createServer(async (req, res) => {
   const urlPath = decodeURIComponent(req.url.split("?")[0]);
-  const filePath = join(root, urlPath);
+  const filePath = resolve(root, "." + urlPath); // prepend '.' to prevent absolute paths
+  if (!filePath.startsWith(root)) { // path traversal detected
+    res.writeHead(403, {"Content-Type": "text/plain"});
+    res.end("Forbidden");
+    return;
+  }
   try {
     const data = await fs.readFile(filePath);
     const ext = filePath.substring(filePath.lastIndexOf("."));
