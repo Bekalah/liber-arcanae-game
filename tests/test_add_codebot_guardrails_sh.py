@@ -1,11 +1,21 @@
-#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+# Test framework: pytest (preferred in this repository if available).
+# These tests execute the guardrails bash script in a temporary directory
+# and validate creation, idempotency, overwrite behavior, and append semantics.
+
+import os
+import stat
+import subprocess
+import shutil
+from pathlib import Path
+import textwrap
+
+SHELL_SCRIPT = """#\!/usr/bin/env bash
 # ✦ CodeBot Guardrails — Cathedral-safe defaults (ND-safe, no flatten)
 set -euo pipefail
 OVERWRITE="${OVERWRITE:-0}"
-# wf writes stdin to the file path given by $1, creating parent directories as needed; if the target exists and the OVERWRITE environment variable is not "1" it prints "skip (exists): <path>" and does nothing, otherwise it writes stdin to the file and prints "wrote: <path>".
-      wf(){ [[ -e "$1" && "$OVERWRITE" != "1" ]] && { echo "skip (exists): $1"; return; }
+wf(){ [[ -e "$1" && "$OVERWRITE" \!= "1" ]] && { echo "skip (exists): $1"; return; }
       mkdir -p "$(dirname "$1")"; cat >"$1"; echo "wrote: $1"; }
-# ap appends a line to a file if that exact line is not already present, creating parent directories as needed and printing a message when it appends.
 ap(){ local f="$1" l="$2"; mkdir -p "$(dirname "$f")"; grep -Fqx "$l" "$f" 2>/dev/null || { echo "$l" >> "$f"; echo "appended: $l -> $f"; }; }
 
 # 0) Folders
@@ -14,6 +24,7 @@ mkdir -p core .github/ISSUE_TEMPLATE .github/labels docs/assets/bib
 # 1) Code Bot contract (short form)
 wf core/CODEBOT_BRIEF.md <<'DOC'
 # ✦ CODEBOT BRIEF — Cathedral Protocol (Do Not Flatten)
+
 - Never overwrite sacred data; prefer new files. If overwrite is essential, back up to `rescue/YYYY-MM-DD/`.
 - ND-safe always: no autoplay, no strobe, motion = reduced; audio ramps gently.
 - Data-driven only: read from `/data/*.json`, `/tesseract/data/*.json`, `/registry/*.json`. Do not hardcode lists.
@@ -30,6 +41,7 @@ wf core/MASTER_BOT_INSTRUCTION_CODEX.md <<'DOC'
 “Per Texturas Numerorum, Spira Loquitur” — the spiral speaks through structure.
 
 ## Repos in the Temple Matrix
+
 - codex-14499 — 144-node spiral (angels, daemons, gods, geometry, music, healing).
 - cosmogenesis-learning-engine — toggles, chapels, resonance, tesseract/chariot.
 - magical-mystery-house — 144-room labyrinth (rooms mirror codex nodes; wormholes).
@@ -60,6 +72,7 @@ name: Cathedral Task (Schema-Driven, ND-safe)
 description: Ask Code Bot to add/extend without flattening the living system.
 labels: ["cathedral", "schema", "nd-safe"]
 body:
+
   - type: markdown
     attributes:
       value: |
@@ -122,6 +135,122 @@ DOC
 
 # 6) Append discoverability to Pages index if present
 [[ -f docs/index.html ]] && {
-  ap docs/index.html '<!-- cathedral-protocol: see core/CODEBOT_BRIEF.md -->'
+  ap docs/index.html '<\!-- cathedral-protocol: see core/CODEBOT_BRIEF.md -->'
 }
 echo "Guardrails installed. Consider importing labels with:  gh label import -f .github/labels/labels.csv"
+"""
+
+COMMENT_LINE = "<\!-- cathedral-protocol: see core/CODEBOT_BRIEF.md -->"
+
+def _write_script(tmp_path: Path) -> Path:
+    script_path = tmp_path / "add_codebot_guardrails.sh"
+    script_path.write_text(SHELL_SCRIPT, encoding="utf-8")
+    current = script_path.stat().st_mode
+    script_path.chmod(current | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+    return script_path
+
+def _run(script_path: Path, cwd: Path, extra_env=None):
+    env = os.environ.copy()
+    if extra_env:
+        env.update(extra_env)
+    # Execute the script file directly (it has a shebang and was made executable).
+    return subprocess.run(
+        ["/usr/bin/env", "bash", os.fspath(script_path)],
+        cwd=str(cwd),
+        env=env,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+
+def test_installs_creates_files_and_content(tmp_path: Path):
+    script = _write_script(tmp_path)
+    result = _run(script, tmp_path)
+
+    out = result.stdout
+    # Expect creation messages
+    assert "wrote: core/CODEBOT_BRIEF.md" in out
+    assert "wrote: core/MASTER_BOT_INSTRUCTION_CODEX.md" in out
+    assert "wrote: .github/ISSUE_TEMPLATE/cathedral_task.yml" in out
+    assert "wrote: .github/labels/labels.csv" in out
+    assert "wrote: README_CATHEDRAL_NOTE.md" in out
+    assert "Guardrails installed." in out
+
+    # Files and key content checks
+    brief = tmp_path / "core" / "CODEBOT_BRIEF.md"
+    codex = tmp_path / "core" / "MASTER_BOT_INSTRUCTION_CODEX.md"
+    issue = tmp_path / ".github" / "ISSUE_TEMPLATE" / "cathedral_task.yml"
+    labels = tmp_path / ".github" / "labels" / "labels.csv"
+    note = tmp_path / "README_CATHEDRAL_NOTE.md"
+
+    for p in (brief, codex, issue, labels, note):
+        assert p.exists()
+
+    assert brief.read_text(encoding="utf-8").startswith("# ✦ CODEBOT BRIEF — Cathedral Protocol (Do Not Flatten)")
+    assert "MASTER BOT INSTRUCTION CODEX" in codex.read_text(encoding="utf-8")
+    assert issue.read_text(encoding="utf-8").splitlines()[0].startswith("name: Cathedral Task")
+    labels_txt = labels.read_text(encoding="utf-8")
+    assert "name,color,description" in labels_txt
+    assert "cathedral,6a5acd" in labels_txt
+
+def test_idempotency_no_overwrite_when_overwrite_not_set(tmp_path: Path):
+    script = _write_script(tmp_path)
+    _run(script, tmp_path)  # first run creates files
+
+    brief = tmp_path / "core" / "CODEBOT_BRIEF.md"
+    brief.write_text("CUSTOM CONTENT", encoding="utf-8")
+
+    result2 = _run(script, tmp_path)  # second run should skip existing files
+    out2 = result2.stdout
+    assert "skip (exists): core/CODEBOT_BRIEF.md" in out2
+    # Content should remain as we customized (no overwrite)
+    assert brief.read_text(encoding="utf-8") == "CUSTOM CONTENT"
+
+def test_overwrite_when_env_set(tmp_path: Path):
+    script = _write_script(tmp_path)
+    _run(script, tmp_path)
+
+    # Modify file, then force overwrite
+    codex = tmp_path / "core" / "MASTER_BOT_INSTRUCTION_CODEX.md"
+    codex.write_text("MODIFIED", encoding="utf-8")
+
+    result = _run(script, tmp_path, extra_env={"OVERWRITE": "1"})
+    out = result.stdout
+    assert "wrote: core/MASTER_BOT_INSTRUCTION_CODEX.md" in out
+    assert codex.read_text(encoding="utf-8").startswith("# ✦ CIRCUITUM99 — MASTER BOT INSTRUCTION CODEX ✦")
+
+def test_append_to_docs_index_once_only_when_present(tmp_path: Path):
+    script = _write_script(tmp_path)
+
+    # Create a docs index to trigger append
+    docs_dir = tmp_path / "docs"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    idx = docs_dir / "index.html"
+    idx.write_text("<html><head></head><body>Hello</body></html>\n", encoding="utf-8")
+
+    result1 = _run(script, tmp_path)
+    out1 = result1.stdout
+    assert f"appended: {COMMENT_LINE} -> docs/index.html" in out1
+    content1 = idx.read_text(encoding="utf-8")
+    assert content1.count(COMMENT_LINE) == 1
+
+    # Run again; should not duplicate
+    result2 = _run(script, tmp_path)
+    out2 = result2.stdout
+    # No second "appended" message expected (idempotent append)
+    assert f"appended: {COMMENT_LINE} -> docs/index.html" not in out2
+    content2 = idx.read_text(encoding="utf-8")
+    assert content2.count(COMMENT_LINE) == 1
+
+def test_no_append_when_index_missing(tmp_path: Path):
+    script = _write_script(tmp_path)
+    # Ensure docs/index.html does not exist
+    assert not (tmp_path / "docs" / "index.html").exists()
+
+    result = _run(script, tmp_path)
+    out = result.stdout
+    # Should not mention appended since index doesn't exist
+    assert "appended:" not in out
+    # Still, required artifacts should exist
+    assert (tmp_path / "core" / "CODEBOT_BRIEF.md").exists()
+    assert (tmp_path / ".github" / "labels" / "labels.csv").exists()
