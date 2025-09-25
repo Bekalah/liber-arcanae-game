@@ -1,0 +1,6 @@
+name,color,description
+cathedral,6a5acd,Living system work; schema-first
+schema,8a7fff,Requires reading from JSON schemas
+nd-safe,00b894,Neurodiversity-safe constraint
+provenance,ffd166,Add or verify CSL citations
+tesseract,64b5f6,Chariot/skin/3D study tasks
