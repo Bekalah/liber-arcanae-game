@@ -15,6 +15,7 @@
     .status { color:var(--muted); font-size:12px; }
     #stage { display:block; margin:16px auto; box-shadow:0 0 0 1px #1d1d2a; }
     .note { max-width:900px; margin:0 auto 16px; color:var(--muted); }
+    .note-inline { margin-top:8px; font-size:13px; }
     code { background:#11111a; padding:2px 4px; border-radius:3px; }
   </style>
 </head>
@@ -77,6 +78,15 @@
       document.body.style.color = palette.ink;
     }
 
+    function insertMissingPaletteNotice(reference, message) {
+      // Inline notice honours acceptance criteria: palette absence is communicated calmly
+      if (!reference || document.querySelector(".note-inline")) return;
+      const note = document.createElement("p");
+      note.className = "note note-inline";
+      note.textContent = message;
+      reference.insertAdjacentElement("afterend", note);
+    }
+
     const defaults = {
       palette: {
         bg:"#0b0b12",
@@ -90,6 +100,9 @@
     applyPaletteVariables(paletteForRender);
 
     const paletteStatus = paletteData ? "Palette loaded." : "Palette missing; using safe fallback.";
+    if (!paletteData) {
+      insertMissingPaletteNotice(canvas, "Palette file not found; using embedded fallback palette so contrast stays safe.");
+    }
 
     if (!ctx) {
       elStatus.textContent = paletteStatus + " Canvas rendering unavailable.";

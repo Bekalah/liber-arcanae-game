@@ -12,8 +12,12 @@ Static, ND-safe HTML5 canvas renderer for layered sacred geometry. Open [index.h
 
 Canonical IDs tag the scaffold: nodes are `C144N-001` through `C144N-010` and gates use `G-099-01` to `G-099-22`.
 
+
+Each layer uses the next color from [`data/palette.json`](./data/palette.json). The loader normalizes palettes that provide fewer than four layer colors and updates the page chrome so background and text remain aligned. If the palette file is missing, a safe fallback loads and a small inline notice appears beside the canvas to keep the ND-safe rationale explicit.
+
 Each layer uses the next color from [`data/palette.json`](./data/palette.json). The loader normalizes palettes that provide fewer than four layer colors and updates the page chrome so background and text remain aligned. If the palette file is missing, a safe fallback loads and a small notice appears.
 Each layer uses the next color from [`data/palette.json`](./data/palette.json). If the palette file is missing, a safe fallback loads and both the header and canvas display a gentle notice.
+
 
 ## Numerology
 Geometry routines reference sacred numbers 3, 7, 9, 11, 22, 33, 99, and 144 to keep proportions meaningful while staying static.
