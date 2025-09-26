@@ -1,5 +1,3 @@
-<!-- Per Texturas Numerorum, Spira Loquitur.  // -->
-<!-- C33-01 Cosmic Helix Renderer -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,42 +13,26 @@
     .status { color:var(--muted); font-size:12px; }
     #stage { display:block; margin:16px auto; box-shadow:0 0 0 1px #1d1d2a; }
     .note { max-width:900px; margin:0 auto 16px; color:var(--muted); }
-    .note-inline { margin-top:8px; font-size:13px; }
     code { background:#11111a; padding:2px 4px; border-radius:3px; }
   </style>
 </head>
 <body>
   <header>
-    <div><strong>Cosmic Helix Renderer</strong> &mdash; layered sacred geometry (offline, ND-safe)</div>
-    <div class="status" id="status">Loading palette&hellip;</div>
+    <div><strong>Cosmic Helix Renderer</strong> — layered sacred geometry (offline, ND-safe)</div>
+    <div class="status" id="status">Loading palette…</div>
   </header>
 
-  <!-- 1440x900 stage mirrors lattice 144 and soft 9-fold verticals; fixed size prevents sudden resize flashes -->
   <canvas id="stage" width="1440" height="900" aria-label="Layered sacred geometry canvas"></canvas>
-  <p class="note" id="info-note">This static renderer encodes Vesica, Tree-of-Life, Fibonacci, and a static double-helix lattice. No animation, no autoplay, no external libs. Open this file directly.</p>
+  <p class="note">This static renderer encodes Vesica, Tree-of-Life, Fibonacci, and a static double-helix lattice. No animation, no autoplay, no external libs. Open this file directly.</p>
 
   <script type="module">
     import { renderHelix } from "./js/helix-renderer.mjs";
 
     const elStatus = document.getElementById("status");
-    const infoNote = document.getElementById("info-note");
     const canvas = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-    const fallbackId = "palette-warning";
-
-    function reportFallback(message) {
-      elStatus.textContent = message;
-      if (!infoNote) return;
-      if (document.getElementById(fallbackId)) return;
-      const warning = document.createElement("p");
-      warning.id = fallbackId;
-      warning.className = "note";
-      warning.textContent = message;
-      infoNote.insertAdjacentElement("afterend", warning);
-    }
 
     async function loadJSON(path) {
-      // Offline friendly: try local fetch, fall back silently if blocked by file:// restrictions
       try {
         const res = await fetch(path, { cache: "no-store" });
         if (!res.ok) throw new Error(String(res.status));
@@ -58,46 +40,6 @@
       } catch (err) {
         return null;
       }
-    }
-
-    function normalizePalette(candidate, fallback) {
-      // Ensures four layer colors even if palette.json is trimmed or missing entries
-      const safe = {
-        bg: fallback.bg,
-        ink: fallback.ink,
-        layers: []
-      };
-      if (candidate) {
-        if (typeof candidate.bg === "string") safe.bg = candidate.bg;
-        if (typeof candidate.ink === "string") safe.ink = candidate.ink;
-      }
-      const layers = candidate && Array.isArray(candidate.layers) ? candidate.layers : [];
-      const fallbackLayers = fallback.layers;
-      const required = 4;
-      for (let i = 0; i < required; i++) {
-        const fallbackIndex = i % fallbackLayers.length;
-        const color = typeof layers[i] === "string" ? layers[i] : fallbackLayers[fallbackIndex];
-        safe.layers.push(color);
-      }
-      return safe;
-    }
-
-    function applyPaletteVariables(palette) {
-      // Aligns document chrome with the active palette for consistent ND-safe contrast
-      const rootStyle = document.documentElement.style;
-      rootStyle.setProperty("--bg", palette.bg);
-      rootStyle.setProperty("--ink", palette.ink);
-      document.body.style.background = palette.bg;
-      document.body.style.color = palette.ink;
-    }
-
-    function insertMissingPaletteNotice(reference, message) {
-      // Inline notice honours acceptance criteria: palette absence is communicated calmly
-      if (!reference || document.querySelector(".note-inline")) return;
-      const note = document.createElement("p");
-      note.className = "note note-inline";
-      note.textContent = message;
-      reference.insertAdjacentElement("afterend", note);
     }
 
     const defaults = {
@@ -108,50 +50,16 @@
       }
     };
 
-    if (!ctx) {
-      // ND-safe: acknowledge missing Canvas support instead of failing silently
-      reportFallback("Canvas context unavailable; static fallback only.");
-    } else {
-      const palette = await loadJSON("./data/palette.json");
-      const paletteLoaded = Boolean(palette);
-      const active = paletteLoaded ? palette : defaults.palette;
-      if (paletteLoaded) {
-        elStatus.textContent = "Palette loaded.";
-      } else {
-        reportFallback("Palette missing; using safe fallback.");
-      }
-
-    const paletteStatus = paletteData ? "Palette loaded." : "Palette missing; using safe fallback.";
-    if (!paletteData) {
-      insertMissingPaletteNotice(canvas, "Palette file not found; using embedded fallback palette so contrast stays safe.");
-    }
-
-      // ND-safe rationale: no motion, high readability, soft colors, layered order preserved
-      renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:active, NUM, paletteLoaded });
-    }
+    const palette = await loadJSON("./data/palette.json");
+    const paletteLoaded = Boolean(palette);
+    const active = palette || defaults.palette;
+    elStatus.textContent = paletteLoaded ? "Palette loaded." : "Palette missing; using safe fallback.";
 
     // Numerology constants used by geometry routines
     const NUM = { THREE:3, SEVEN:7, NINE:9, ELEVEN:11, TWENTYTWO:22, THIRTYTHREE:33, NINETYNINE:99, ONEFORTYFOUR:144 };
 
     // ND-safe rationale: no motion, high readability, soft colors, layered order
-    renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:paletteForRender, NUM });
-    elStatus.textContent = paletteStatus + " Geometry rendered.";
-    const palette = await loadJSON("./data/palette.json");
-    const active = palette || defaults.palette;
-    elStatus.textContent = palette ? "Palette loaded." : "Palette missing; using safe fallback.";
-
-    // Numerology constants used by geometry routines
-    const NUM = { THREE:3, SEVEN:7, NINE:9, ELEVEN:11, TWENTYTWO:22, THIRTYTHREE:33, NINETYNINE:99, ONEFORTYFOUR:144 };
-
-    const palette = await loadJSON("./data/palette.json");
-    const active = palette || defaults.palette;
-    elStatus.textContent = palette ? "Palette loaded." : "Palette missing; using safe fallback.";
-
-    // Numerology constants used by geometry routines
-    const NUM = { THREE:3, SEVEN:7, NINE:9, ELEVEN:11, TWENTYTWO:22, THIRTYTHREE:33, NINETYNINE:99, ONEFORTYFOUR:144 };
-
-    // ND-safe rationale: no motion, high readability, soft colors, layered order
-    renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:active, NUM });
+    renderHelix(ctx, { width:canvas.width, height:canvas.height, palette:active, NUM, paletteLoaded, statusEl:elStatus });
   </script>
 </body>
 </html>

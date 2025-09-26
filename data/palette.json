@@ -1,12 +1,12 @@
 {
   "bg": "#0b0b12",
-  "ink": "#e8e8f0",
+  "ink": "#f0f0ff",
   "layers": [
     "#b1c7ff",
-    "#89f7fe",
-    "#a0ffa1",
-    "#ffd27f",
-    "#f5a3ff",
-    "#d0d0e6"
+    "#8fd1ff",
+    "#a7f7c3",
+    "#ffe3a4",
+    "#f5b8ff",
+    "#d8d8f6"
   ]
 }
